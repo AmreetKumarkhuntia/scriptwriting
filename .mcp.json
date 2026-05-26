@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mcp-youtube": {
+      "command": "npx",
+      "args": ["-y", "mcp-youtube"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+  }
+}
