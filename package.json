@@ -1,0 +1,21 @@
+{
+  "name": "scriptwriting",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/AmreetKumarkhuntia/scriptwriting#readme",
+  "bugs": {
+    "url": "https://github.com/AmreetKumarkhuntia/scriptwriting/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmreetKumarkhuntia/scriptwriting.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd remotion-all && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

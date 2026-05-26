@@ -1,1 +1,9 @@
 .playwright-mcp/
+node_modules/
+dist/
+coverage/
+*.log
+*.tmp
+*.env
+
+remotion-all

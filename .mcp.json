@@ -7,6 +7,10 @@
     "playwright": {
       "command": "npx",
       "args": ["@playwright/mcp@latest"]
+    },
+    "remotion": {
+      "command": "npx",
+      "args": ["-y", "@remotion/mcp@4.0.467", "--directory", "./remotion-all"]
     }
   }
 }
