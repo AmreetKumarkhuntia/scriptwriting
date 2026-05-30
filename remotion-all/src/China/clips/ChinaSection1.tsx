@@ -7,6 +7,8 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { Trail } from "@remotion/motion-blur";
+import { noise2D } from "@remotion/noise";
 import { colors, fonts, sides, signal } from "../theme";
 import { SceneBackground } from "../components/SceneBackground";
 import { KineticTitle } from "../components/KineticTitle";
@@ -78,6 +80,8 @@ const LabNode: React.FC<{ delay: number }> = ({ delay }) => {
     config: { damping: 14, stiffness: 120 },
     durationInFrames: 18,
   });
+  const wobbleX = noise2D(`lab-${delay}-x`, frame / 24, 0) * 5;
+  const wobbleY = noise2D(`lab-${delay}-y`, frame / 24, 0) * 5;
   return (
     <div
       style={{
@@ -85,7 +89,7 @@ const LabNode: React.FC<{ delay: number }> = ({ delay }) => {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
         }),
-        transform: `scale(${interpolate(p, [0, 1], [0.4, 1])})`,
+        transform: `scale(${interpolate(p, [0, 1], [0.4, 1])}) translate(${wobbleX}px, ${wobbleY}px)`,
         width: 120,
         height: 120,
         borderRadius: "50%",
@@ -152,13 +156,15 @@ export const ChinaSection1: React.FC = () => {
       <AbsoluteFill style={{ opacity: fadeOut }}>
         {/* Beat 1 — the question that opens the section */}
         <Sequence durationInFrames={75}>
-          <AbsoluteFill style={CENTER}>
-            <KineticTitle
-              lines={["ACTUALLY", "KYA BADLA?"]}
-              fontSize={160}
-              stagger={6}
-            />
-          </AbsoluteFill>
+          <Trail layers={8} lagInFrames={0.1} trailOpacity={0.6}>
+            <AbsoluteFill style={CENTER}>
+              <KineticTitle
+                lines={["ACTUALLY", "KYA BADLA?"]}
+                fontSize={160}
+                stagger={6}
+              />
+            </AbsoluteFill>
+          </Trail>
         </Sequence>
 
         {/* Beat 2 — the old assumption */}
@@ -255,14 +261,16 @@ export const ChinaSection1: React.FC = () => {
               />
             </div>
             <Sequence from={150} layout="none">
-              <AbsoluteFill style={CENTER}>
-                <KineticTitle
-                  lines={["WHAT WORKS AT SCALE —", "AND STAYS CHEAP?"]}
-                  fontSize={96}
-                  stagger={4}
-                  accent={sides.china}
-                />
-              </AbsoluteFill>
+              <Trail layers={8} lagInFrames={0.1} trailOpacity={0.6}>
+                <AbsoluteFill style={CENTER}>
+                  <KineticTitle
+                    lines={["WHAT WORKS AT SCALE —", "AND STAYS CHEAP?"]}
+                    fontSize={96}
+                    stagger={4}
+                    accent={sides.china}
+                  />
+                </AbsoluteFill>
+              </Trail>
             </Sequence>
           </AbsoluteFill>
         </Sequence>
@@ -398,14 +406,16 @@ export const ChinaSection1: React.FC = () => {
 
         {/* Beat 11 — re-hook into Section 2 */}
         <Sequence from={3490} durationInFrames={90}>
-          <AbsoluteFill style={CENTER}>
-            <KineticTitle
-              lines={["TOH YEH LOG", "HAIN KAUN?"]}
-              fontSize={150}
-              stagger={6}
-              accent={sides.china}
-            />
-          </AbsoluteFill>
+          <Trail layers={8} lagInFrames={0.1} trailOpacity={0.6}>
+            <AbsoluteFill style={CENTER}>
+              <KineticTitle
+                lines={["TOH YEH LOG", "HAIN KAUN?"]}
+                fontSize={150}
+                stagger={6}
+                accent={sides.china}
+              />
+            </AbsoluteFill>
+          </Trail>
         </Sequence>
       </AbsoluteFill>
     </AbsoluteFill>

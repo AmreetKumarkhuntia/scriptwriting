@@ -1,4 +1,5 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { noise2D } from "@remotion/noise";
 import { colors } from "../theme";
 
 // Full-screen themed background reused by every clip: a midnight->navy gradient
@@ -6,8 +7,10 @@ import { colors } from "../theme";
 export const SceneBackground: React.FC = () => {
   const frame = useCurrentFrame();
 
-  // Slow diagonal drift of the dot grid (one 40px tile loop).
-  const drift = (frame * 0.25) % 40;
+  // Organic noise-based drift — wanders in [0, 40] without a modulo jump-reset.
+  // frame/120 = one noise "cycle" ≈ 4 seconds.
+  const driftX = (noise2D("bg-x", frame / 120, 0) * 0.5 + 0.5) * 40;
+  const driftY = (noise2D("bg-y", frame / 120, 0) * 0.5 + 0.5) * 40;
 
   return (
     <AbsoluteFill
@@ -20,7 +23,7 @@ export const SceneBackground: React.FC = () => {
         style={{
           backgroundImage: `radial-gradient(${colors.blueMed}22 1.5px, transparent 1.5px)`,
           backgroundSize: "40px 40px",
-          backgroundPosition: `${drift}px ${drift}px`,
+          backgroundPosition: `${driftX}px ${driftY}px`,
         }}
       />
 
