@@ -5,5 +5,3 @@ coverage/
 *.log
 *.tmp
 *.env
-
-remotion-all
