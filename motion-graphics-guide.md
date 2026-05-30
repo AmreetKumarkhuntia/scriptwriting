@@ -99,6 +99,88 @@ Reuse these before building anything new. All animate purely off `useCurrentFram
 - **`StrikeWord`** — a word that fades in, then a red bar wipes through it. For dead/old ideas
   ("JUST A CHATBOT", "WHICH IS THE BEST MODEL?").
 
+## Effects (`@remotion/motion-blur`, `@remotion/noise`, `@remotion/paths`, glitch)
+
+Four effect packages are installed. Reach for these before building custom CSS tricks.
+
+### Motion Blur — two variants
+
+**`<Trail>`** — duplicates children at time-offset layers; good for fast-moving elements (kinetic
+text flying in, logos slamming onto screen):
+```tsx
+import { Trail } from "@remotion/motion-blur";
+<Trail layers={10} lagInFrames={0.1} trailOpacity={0.6}>
+  <AbsoluteFill>…moving element…</AbsoluteFill>
+</Trail>
+```
+Props: `layers` (copies behind), `lagInFrames` (frame offset per layer, decimals ok),
+`trailOpacity` (peak opacity of trail). Children must be absolutely positioned.
+
+**`<CameraMotionBlur>`** — film-camera blur for a camera-move feel on transitions:
+```tsx
+import { CameraMotionBlur } from "@remotion/motion-blur";
+<CameraMotionBlur shutterAngle={180} samples={5}>
+  <AbsoluteFill>…</AbsoluteFill>
+</CameraMotionBlur>
+```
+Props: `shutterAngle` (180 = standard; higher = more blur), `samples` (5–10).
+⚠️ Destructive to colors — keep samples ≤ 10.
+
+### Noise
+
+Deterministic Perlin noise — organic wobble/drift with no `Math.random()`:
+```tsx
+import { noise2D } from "@remotion/noise";
+// noise2D(seed, x, y) → number in [-1, 1]
+const wobble = noise2D("dot-x", frame / 20, 0) * 8; // ±8 px drift
+```
+Use `noise3D(seed, x, y, z)` for 2D spatial variation (e.g., independent wobble per dot in the
+background grid). The `seed` string isolates animations from each other and makes them
+reproducible.
+
+### Path Animations
+
+Use the shared **`PathDraw`** component (`src/shared/effects/`) to animate SVG paths drawing in:
+```tsx
+import { PathDraw } from "../../shared/effects";
+<PathDraw
+  d="M 100 540 L 1820 540"
+  stroke={theme.colors.skyLight}
+  strokeWidth={4}
+  durationInFrames={24}
+  startDelay={15}
+/>
+```
+Props: `d` (SVG path string), `stroke`, `strokeWidth` (default 3), `fill` (default "none"),
+`durationInFrames` (default 30), `startDelay` (default 0), `easing`.
+Good for: underlines, arrows, horizontal dividers, chart axes drawing in, timeline connectors.
+For full control use `evolvePath(progress, d)` from `@remotion/paths` directly.
+
+### Glitch Effect
+
+```tsx
+import { DigitalGlitchRGB } from "@storybynumbers_/remotion-glitch-effect";
+<DigitalGlitchRGB splitAmount={4} blurAmount={0.8} jitterAmount={1.5} seed={42}>
+  <AbsoluteFill>…content to glitch…</AbsoluteFill>
+</DigitalGlitchRGB>
+```
+Props: `splitAmount` (RGB px offset, 2–8), `blurAmount` (0–2), `jitterAmount` (global shake,
+0–3), `burstSpacing` (avg frames between bursts, 15–45), `burstDuration` ([min,max] frames),
+`seed` (reproducibility).
+Wrap only the element that should glitch — not the whole scene.
+
+### Quick reference
+
+| Effect | Use for |
+|---|---|
+| `<Trail>` | Kinetic text flying in, logos slamming onto screen |
+| `<CameraMotionBlur>` | Scene transitions with camera-move energy |
+| `noise2D/3D` | Organic dot-grid drift, particle wobble, subtle position jitter |
+| `PathDraw` | Lines / arrows drawing in, underlines, chart axes |
+| `<DigitalGlitchRGB>` | Titles at high-tension moments, "system failure" stingers |
+
+---
+
 ## Remotion patterns & gotchas (learned the hard way)
 
 - **Animate with `useCurrentFrame` + `interpolate` + `spring` only.** No CSS transitions/
