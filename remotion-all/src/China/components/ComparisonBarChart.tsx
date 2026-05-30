@@ -4,7 +4,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { colors, fonts, sides } from "../theme";
+import { colors, fonts, signal } from "../theme";
 
 export type ComparisonBar = {
   label: string; // model / category name under the bar
@@ -24,14 +24,14 @@ type Props = {
   axisTitle?: string; // caption rendered BELOW the chart (e.g. "SWE-Bench Verified")
 };
 
-// Per-side fill + glow, following the comparison convention in theme.ts:
-// Chinese side = skyLight/blueMed, US side = royal/navy.
+// Per-side fill + glow, color-coded by meaning (theme.ts `signal`):
+// China / cheaper side = green, GPT / expensive side = red.
 const SIDE_STYLE: Record<
   ComparisonBar["side"],
   { fill: string; glow: string; value: string }
 > = {
-  china: { fill: sides.chinaDeep, glow: sides.china, value: sides.china },
-  us: { fill: sides.us, glow: sides.usDeep, value: "#9FB2D8" },
+  china: { fill: signal.goodDeep, glow: signal.good, value: signal.good },
+  us: { fill: signal.badDeep, glow: signal.bad, value: signal.bad },
 };
 
 // Animated vertical bar chart for comparing a small set of labeled values.
@@ -151,9 +151,9 @@ export const ComparisonBarChart: React.FC<Props> = ({
             style={{
               width: barWidth,
               fontFamily: fonts.body,
-              fontWeight: 600,
+              fontWeight: 500,
               fontSize: 26,
-              color: "#FFFFFF",
+              color: "#C7D3E6",
               textTransform: "uppercase",
               letterSpacing: 1,
               textAlign: "center",

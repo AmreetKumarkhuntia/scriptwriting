@@ -7,7 +7,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { colors, fonts, sides } from "../theme";
+import { colors, fonts, sides, signal } from "../theme";
 import { SceneBackground } from "../components/SceneBackground";
 import { KineticTitle } from "../components/KineticTitle";
 import { StatCounter } from "../components/StatCounter";
@@ -229,7 +229,10 @@ export const ChinaSection1: React.FC = () => {
               countDuration={30}
               fontSize={150}
               entrance="slide"
-              label="model calls — every single day"
+              heroFont="heavy"
+              label="model calls, every single day"
+              labelWeight={300}
+              labelColor="#9FB2D8"
             />
           </AbsoluteFill>
         </Sequence>
@@ -296,10 +299,13 @@ export const ChinaSection1: React.FC = () => {
               startDelay={120}
               countDuration={26}
               fontSize={130}
-              color="#E0476B"
-              accent="#E0476B"
+              color={signal.bad}
+              accent={signal.bad}
               entrance="slide"
-              label="more expensive — for 8 points"
+              heroFont="heavy"
+              label="more expensive — for just 8 points"
+              labelWeight={300}
+              labelColor="#9FB2D8"
             />
           </AbsoluteFill>
         </Sequence>
@@ -317,14 +323,19 @@ export const ChinaSection1: React.FC = () => {
               axisTitle="Price per 1M tokens"
             />
             <StatCounter
-              prefix="up to "
+              lead="UP TO"
               to={50}
-              suffix="× cheaper"
+              suffix="×"
               startDelay={360}
               countDuration={34}
-              fontSize={130}
+              fontSize={150}
+              color={signal.good}
+              accent={signal.good}
               entrance="slide"
-              label="than GPT-5.5"
+              heroFont="heavy"
+              label="cheaper than GPT-5.5"
+              labelWeight={300}
+              labelColor="#9FB2D8"
             />
           </AbsoluteFill>
         </Sequence>

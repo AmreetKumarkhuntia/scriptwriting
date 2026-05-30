@@ -18,13 +18,23 @@ export const sides = {
   usDeep: colors.navy,
 } as const;
 
+// Semantic data colors (kept separate from the blue brand palette): used to
+// highlight meaning in charts/callouts — green = China / cheaper / win,
+// red = GPT / expensive / the incumbent to watch.
+export const signal = {
+  good: "#3DDC97", // green — China / cheaper
+  goodDeep: "#1E9E6A",
+  bad: "#FF5C6C", // red — GPT / expensive
+  badDeep: "#C9384A",
+} as const;
+
 const bebas = loadBebas("normal", {
   weights: ["400"],
   subsets: ["latin"],
 });
 
 const montserrat = loadMontserrat("normal", {
-  weights: ["400", "500", "600", "700"],
+  weights: ["300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
 });
 

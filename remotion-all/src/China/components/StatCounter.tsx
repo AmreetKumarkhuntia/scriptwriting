@@ -18,10 +18,16 @@ type Props = {
   color?: string;
   accent?: string;
   entrance?: "pop" | "slide"; // "pop" = bouncy scale-in; "slide" = smooth rise
+  heroFont?: "display" | "heavy"; // "display" = Bebas; "heavy" = Montserrat 800
+  lead?: string; // small light qualifier above the number (e.g. "UP TO")
+  labelWeight?: number; // sub-label weight (default 600)
+  labelColor?: string; // sub-label color (default white)
 };
 
 // Animated number count-up, plus an optional Montserrat label. The block can
 // either pop in (bouncy scale) or slide up smoothly, via the `entrance` prop.
+// Typographic hierarchy: a light `lead` above, a heavy hero number, a `label`
+// below whose weight/color can go light for editorial callouts.
 export const StatCounter: React.FC<Props> = ({
   to,
   prefix = "",
@@ -34,6 +40,10 @@ export const StatCounter: React.FC<Props> = ({
   color = colors.skyLight,
   accent = colors.skyLight,
   entrance = "pop",
+  heroFont = "display",
+  lead,
+  labelWeight = 600,
+  labelColor = "#FFFFFF",
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -85,13 +95,29 @@ export const StatCounter: React.FC<Props> = ({
         transform,
       }}
     >
+      {lead ? (
+        <div
+          style={{
+            fontFamily: fonts.body,
+            fontWeight: 300,
+            fontSize: fontSize * 0.2,
+            color: "#8FA3C4",
+            letterSpacing: 8,
+            textTransform: "uppercase",
+            marginBottom: fontSize * 0.04,
+          }}
+        >
+          {lead}
+        </div>
+      ) : null}
       <div
         style={{
-          fontFamily: fonts.display,
+          fontFamily: heroFont === "heavy" ? fonts.body : fonts.display,
+          fontWeight: heroFont === "heavy" ? 800 : undefined,
           fontSize,
           lineHeight: 1,
           color,
-          letterSpacing: 2,
+          letterSpacing: heroFont === "heavy" ? 0 : 2,
           textShadow: `0 0 ${fontSize * 0.22}px ${accent}66`,
         }}
       >
@@ -103,9 +129,9 @@ export const StatCounter: React.FC<Props> = ({
         <div
           style={{
             fontFamily: fonts.body,
-            fontWeight: 600,
+            fontWeight: labelWeight,
             fontSize: fontSize * 0.16,
-            color: "#FFFFFF",
+            color: labelColor,
             opacity: labelOpacity,
             letterSpacing: 1,
             textTransform: "uppercase",

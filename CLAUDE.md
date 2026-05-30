@@ -36,3 +36,11 @@ Each video idea gets its own directory. Place the following inside:
 - `idea.md` — seed idea or premise
 - `research.md` — sourced research notes with links
 - `script.md` — final script draft
+
+## Motion Graphics
+
+Animated graphics for the videos are built in the **`remotion-all/`** Remotion project — one
+folder per video under `remotion-all/src/<VideoName>/` (e.g. `src/China/`), with one composition
+clip per script section. Follow `motion-graphics-guide.md` for the structure, the reusable
+component library, the Remotion gotchas, and the visual/craft design language. The generic
+Remotion API knowledge lives in the `remotion-best-practices` skill.
