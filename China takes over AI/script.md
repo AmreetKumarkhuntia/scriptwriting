@@ -23,38 +23,12 @@ Aur aapko mujhe kyun farak padna chahiye?
 
 Woh sab is video mein pata chalega.
 
-**[TITLE CARD]**
+**[TITLE CARD]** 
 *China Just Took Over AI*
 
 ---
 
-## INTRO (0:30–1:15)
-
-**SCRIPT:**
-
-Chinese AI models kaise ban gaye duniya ka sabse zyada use hone wala AI.
-
-Aur yaar, thoda sa nahi — bahut zyada.
-
-Teen saal se AI ki story simple thi.
-
-OpenAI leads. Anthropic close hai. Google ke paas infrastructure hai.
-
-Yahi log sochte hain aaj bhi.
-
-But data ek bilkul alag story bata raha hai.
-
-Q1 2026 mein, Chinese models ne 61% of all global token consumption cross kar liya — OpenRouter ke according.
-
-Duniya shayad already switch kar chuki hai.
-
-Zyaadatar engineers ne sirf check nahi kiya.
-
-Toh is video mein paanch cheezein dekhenge: woh numbers jo prove karte hain ki yeh already ho gaya, kaun hai inke peeche, kyun unhone open-source kiya, yeh shift kitni tezi se phela, aur woh part jo actually aapko concern karna chahiye.
-
----
-
-# SECTION 1 — THE NUMBERS (1:15–3:00)
+# SECTION 1 — THE NUMBERS (0:30–2:15)
 
 **VISUALS:**
 OpenRouter charts climbing. Pricing comparison tables. Cursor IDE. Autonomous coding agents. Token meters rapidly increasing.
@@ -123,237 +97,292 @@ Toh yeh log hain kaun?
 
 ---
 
-# SECTION 2 — THE PLAYERS (3:00–4:45)
-
-**VISUALS:**
-Lab logos appearing one by one. Map of China with location pins. Funding graphics. Model benchmark scoreboards.
+# SECTION 2 — THE PLAYERS (2:15–4:00)
 
 **SCRIPT:**
 
-Yahi woh part hai jahan yeh shift real lagti hai.
+Aur yahin se cheez sach mein interesting ho jaati hai.
 
-Kyunki yaar, yeh sirf DeepSeek nahi hai.
+Kyunki yeh sirf DeepSeek ki story nahi hai.
 
-Yeh ek poora ecosystem hai.
+Yeh poore ecosystem ki story hai.
 
-DeepSeek — Hangzhou mein. Fund kiya High-Flyer Capital ne — ek quant hedge fund. Koi tech giant nahi, government nahi. Ek quant fund. Unka V4 Pro, Google ke Gemini 3.1 Pro se match karta hai SWE-Bench pe — fraction of the cost pe.
+Pehle ata he DeepSeek, Hangzhou se. Aur sabse interesting baat? Iske peeche koi tech giant nahi hai. Koi government project nahi hai. Sirf ek quant hedge fund — High-Flyer Capital. Aur unka V4 Pro model SWE-Bench par Google Gemini 3.1 Pro ke level tak pahunch gaya, woh bhi kaafi kam cost mein.
 
-Moonshot AI — VC-backed startup, Beijing. Unka model Kimi K2.6 pehla open-weight model tha jo GPT-5.4 ko coding benchmarks pe beat kiya. Do million tokens ka context handle karta hai.
+Phir aata hai Moonshot AI, Beijing se.
 
-Zhipu — Z.ai bhi bolte hain — January 2026 mein Hong Kong Stock Exchange pe IPO hua. Unka GLM-5.1 aath H100 GPUs pe run karta hai, MIT license ke saath. Claude Opus 4.6 ko coding mein beat kiya.
+Unka model Kimi K2.6 pehla open-weight model tha jisne coding benchmarks par GPT-5.4 ko beat kiya. Aur yeh do million tokens ka context handle kar sakta hai.
 
-MiniMax — Shanghai. Ek poore week ke liye OpenRouter ka number one model. 4.55 trillion tokens — saat din mein. Saat din mein yaar.
+Phir hai Zhipu, jise Z.ai bhi kaha jaata hai.
 
-ByteDance — TikTok waala — ne launch kiya Doubao Seed 2.0. Multimodal hai. Text, image, video, voice. Gyarah cents per million tokens.
+2026 mein company Hong Kong Stock Exchange par list hui. Unka GLM-5.1 model sirf aath H100 GPUs par run karta hai aur MIT license ke saath available hai. Kuch coding benchmarks par yeh Claude Opus 4.6 se bhi aage nikla.
 
-Alibaba ka Qwen3.7 Max SWE-Bench Pro pe number three — contamination-free benchmark. Thirty-eight cents mein. Claude Opus 4.7 se tera guna sasta.
+Shanghai ki MiniMax ne bhi sabko surprise kar diya.
 
-StepFun ka Step 3.5 Flash — ten cents per million tokens. GPT-5.5 se fifty times sasta.
+Ek poore hafte tak OpenRouter par sabse zyada use hone wala model MiniMax ka tha. Sirf saat din mein 4.55 trillion tokens process hue.
 
-Aur Baidu ka ERNIE 5.0 enterprise cloud ko target karta hai.
+ByteDance — haan, TikTok waali company — ne launch kiya Doubao Seed 2.0.
 
-Aath labs. Alag alag backers. Alag alag cities. Alag alag specialties.
+Ek multimodal model jo text, images, video aur voice sab handle kar sakta hai. Aur price? Sirf 11 cents per million tokens.
 
-Aur har ek ne same choice ki: open weights release karo.
+Alibaba ka Qwen3.7 Max SWE-Bench Pro par top models mein tha. Aur cost itni kam ki Claude Opus 4.7 ke muqable lagbhag 13 guna sasta padta hai.
 
-Yeh coincidence nahi hai.
+StepFun ka Step 3.5 Flash aur bhi aggressive hai.
 
-Yeh strategy hai.
+Sirf 10 cents per million tokens. GPT-5.5 se lagbhag 50 guna sasta.
 
-But hundreds of millions mein train kiye models ko free mein dena — yaar, yeh toh almost irrational lagta hai.
+Aur phir Baidu ka ERNIE 5.0, jo enterprise market ko target karta hai.
 
-Toh kyun kiya?
+Aath alag labs.
+
+Alag cities.
+
+Alag investors.
+
+Alag goals.
+
+Lekin sabne ek hi bet lagayi.
+
+Models ko open kar do.
+
+Aur yeh koi coincidence nahi tha.
+
+Yeh strategy thi.
+
+Lekin ek sawaal banta hai.
+
+Aakhir koi company hundreds of millions kharch karke model train kare aur phir use almost free mein de de...
+
+aisa kyun karegi?
 
 ---
 
-# SECTION 3 — THE OPEN-SOURCE STRATEGY (4:45–6:30)
-
-**VISUALS:**
-GitHub repositories exploding. HuggingFace pages. Open-source communities. Fork counts increasing.
+# SECTION 3 — THE OPEN-SOURCE STRATEGY (4:00–5:45)
 
 **SCRIPT:**
 
-Kyunki American AI companies ne mostly apne models ko products ki tarah treat kiya.
+Yahin se picture clear hoti hai.
 
-Chinese labs ne unhe ecosystems ki tarah treat kiya.
+American AI companies ne models ko products ki tarah treat kiya.
 
-Aur is ek difference ne sab kuch badal diya.
+Chinese labs ne models ko platforms ki tarah treat kiya.
 
-Yeh kaise kaam karta hai:
+Aur isi ek difference ne game badal diya.
 
-Open weights release karo. Chote research demos nahi — actual competitive models jo developers turant use kar sakein.
+Strategy simple thi.
 
-Phir har developer jo tumhara model fine-tune karta hai...
+Model release karke open source kardo.55
 
-har startup jo uske upar build karta hai...
+Aur developers ko build karne do.
 
-har researcher jo use stress-test karta hai...
+Phir jo startup us model par build kare...
 
-sab tumhara ecosystem strong karte hain.
+jo researcher usse test kare...
 
-Poori duniya effectively tumhari optimization process ka part ban jaati hai.
+jo engineer usse fine-tune kare...
 
-Western labs massive amounts evaluation aur red-teaming pe spend karte hain.
+woh sab ecosystem ko aur strong bana dete hain.
 
-Chinese labs ne woh process lakho developers ko globally outsource kar diya.
+Matlab duniya bhar ke developers tumhare model ko improve karne lagte hain.
 
-Free mein.
+Western labs evaluation aur red-teaming par bahut paisa kharch karti hain.
 
-Aur results bahut tezi se compound hue.
+Chinese labs ko uska ek bada hissa community se mil gaya.
 
-HuggingFace pe akele 113,000 se zyada Qwen derivatives aa gaye — Google aur Meta combined se bhi zyada.
+Aur woh bhi free mein.
 
-Poore startups Chinese foundation models pe directly build karne lage.
+Result?
 
-Aur jab developers kisi model ko apne workflow mein deeply integrate kar lete hain...
+Growth bahut tezi se compound hui.
 
-switching painful ho jaata hai.
+Aaj HuggingFace par sirf Qwen ke hi 113,000 se zyada derivatives maujood hain.
 
-Matlab asli battle ab sirf smartest AI hone ki nahi rahi.
+Google aur Meta ke combined derivatives se bhi zyada.
 
-Yeh ban jaane ki hai — woh default layer jiske upar baaki sab build karte hain.
+Poore startups seedha Chinese foundation models par build karne lage.
 
-Aur abhi, China woh battle jeet raha hai.
+Aur jab koi developer apna workflow kisi model ke around bana leta hai...
 
-But strategy tab hi matter karti hai jab market move kare.
+toh platform change karna mushkil ho jaata hai.
 
-Toh actually kaam kiya kya?
+Isi liye battle sirf smartest model banane ki nahi rahi.
+
+Battle yeh hai ki kaun woh default layer banega jiske upar baaki sab build karenge.
+
+Aur filhaal...
+
+China us race mein kaafi aage nazar aa raha hai.
+
+Lekin strategy tabhi matter karti hai jab market usse adopt kare.
+
+Toh kya yeh approach actually kaam bhi ki?
 
 ---
 
-# SECTION 4 — THE PROOF (6:30–8:00)
-
-**VISUALS:**
-OpenRouter charts climbing. HuggingFace download counters. Usage graphs going vertical.
+# SECTION 4 — THE PROOF (5:45–7:15)
 
 **SCRIPT:**
 
-Numbers se argue karna mushkil hai.
+Numbers dekhoge toh jawab kaafi clear hai.
 
-Chinese models ab 61% of all global token consumption — OpenRouter pe.
+Aaj OpenRouter par use hone wale saare AI tokens mein se lagbhag 61% Chinese models se aate hain.
 
-Real developers. Real production workloads. Real paisa.
+Yaani aadhe se bhi zyada.
 
-Year-over-year growth: 12.7 times.
+Aur yeh sirf traffic nahi hai.
 
-Aur yeh number batata hai exactly kyun yeh itni tezi se compound hua.
+Yeh real developers hain.
 
-January 2025 mein, programming OpenRouter ke total AI usage ka 11% tha.
+Real applications hain.
 
-2026 tak: 50% se zyada.
+Aur real money hai.
 
-Coding agents. Autonomous workflows. Background AI systems.
+Pichhle saal ke comparison mein usage 12.7 guna badha hai.
 
-Wahi workloads jahan volume massive hoti hai aur price sab kuch hota hai.
+Aur is growth ke peeche ek aur interesting trend hai.
 
-Yahi hai woh shift. Jis moment AI infrastructure ban gayi, price deciding factor ban gayi. Aur Chinese models already wahan the.
+2025 ki shuruaat mein programming OpenRouter ke total usage ka sirf 11% thi.
 
-HuggingFace pe — jahan developers actually foundation models download aur build karte hain — 41% downloads ab Chinese hain.
+2026 tak yeh number 50% se upar chala gaya.
 
-US models: 36.5%.
+Coding agents.
 
-Chinese models ne American models ko downloads mein already overtake kar liya.
+Autonomous workflows.
 
-Yeh koi aane wala trend nahi hai.
+Background AI systems.
 
-Yeh already ho chuka hai.
+Yeh wahi workloads hain jahan token volume bahut zyada hota hai.
 
-Aur kisi bhi startup ya engineer ke liye, yeh sab great news lagti hai.
+Aur jahan price sabse zyada matter karti hai.
 
-Sasta. Open. Powerful.
+Jaise hi AI infrastructure banne lagi...
 
-But is picture mein kuch aisa hai jo almost koi nahi bol raha.
+cost sabse important factor ban gayi.
+
+Aur Chinese models us moment ke liye pehle se ready the.
+
+HuggingFace par bhi picture similar hai.
+
+Foundation models ke total downloads mein lagbhag 41% Chinese models ke hain.
+
+American models lagbhag 36.5% par hain.
+
+Matlab downloads ke hisaab se Chinese models already aage nikal chuke hain.
+
+Yeh future ki prediction nahi hai.
+
+Yeh aaj ki reality hai.
+
+Aur agar aap developer ho ya startup founder...
+
+toh yeh sab kaafi achhi news lagti hai.
+
+Models powerful hain.
+
+Open hain.
+
+Aur saste bhi hain.
+
+Lekin story yahin khatam nahi hoti.
 
 ---
 
-# SECTION 5 — THE PART NOBODY WANTS TO TALK ABOUT (8:00–9:30)
-
-**VISUALS:**
-Dark cinematic shots. Global infrastructure graphics. Neural networks overlaying world maps.
+# SECTION 5 — THE PART NOBODY WANTS TO TALK ABOUT (7:15–8:45)
 
 **SCRIPT:**
 
-Ab clearly bolunga —
+Ab ek important baat.
 
-Iska matlab nahi ki Chinese AI models secretly evil hain.
+Iska matlab yeh nahi hai ki Chinese AI models bure hain.
 
-Aur iska matlab bhi nahi ki developers use karna band kar dein.
+Aur na hi iska matlab hai ki log unhe use karna band kar dein.
 
-Bohot saare yeh systems genuinely impressive hain.
+Sach toh yeh hai ki inmein se kaafi models bahut powerful hain.
 
-Isliye hi adoption itni tezi se badh rahi hai.
+Isi liye itne saare developers aur companies inhe adopt kar rahe hain.
 
-But deeper question yeh hai:
+Lekin yahan ek interesting sawaal hai.
 
-Kya hoga jab global AI infrastructure increasingly aise models pe depend karne lage — jo companies control karti hain jo bilkul alag political aur regulatory system mein operate karti hain?
+Agar kal ko duniya ki bahut saari AI apps aur tools kuch hi AI models par depend karne lagen...
 
-Kyunki infrastructure behavior shape karta hai.
+toh uska impact kya hoga?
 
-Invisible defaults matter karte hain.
+Kyunki AI sirf answers nahi deta.
 
-Alignment choices matter karti hain.
+Woh yeh bhi decide karta hai ki kya dikhana hai, kya nahi dikhana hai, aur kis tarah se information present karni hai.
 
-Kya filter hota hai — woh matter karta hai.
+Aur jab lakhon products ek hi foundation par build hote hain...
 
-Kaunse assumptions pe models train hue hain — woh matter karta hai.
+toh us foundation ke decisions bhi har jagah pahunchne lagte hain.
 
-Aur jab millions of applications ek foundation layer ke upar build ho jaati hain...
+Iska scale samajhne ke liye ek example dekho.
 
-Qwen ke already 113,000 derivative models hain HuggingFace pe.
+Aaj Qwen ke 113,000 se zyada versions Hugging Face par maujood hain.
 
-Har ek ek product hai, tool hai, agent hai — Chinese foundation pe build kiya hua.
+Matlab ek model se hazaaron naye tools, apps aur AI agents ban rahe hain.
 
-Chinese defaults bake in hain.
+Isi liye kuch experts is situation ko Huawei aur 5G debate se compare karte hain.
 
-Woh decisions sab jagah quietly spread hone lagte hain.
+Technology same nahi hai.
 
-Scale pe.
+Lekin sawaal milta-julta hai.
 
-Isliye log is moment ko Huawei 5G debate se compare karte hain.
+Agar future ka critical infrastructure kisi aur country ki companies bana rahi ho...
 
-Isliye nahi ki technologies identical hain...
+toh uske long-term effects kya ho sakte hain?
 
-...balki isliye ki concern similar hai.
+Aur is baar baat internet cables ya telecom towers ki nahi hai.
 
-Kya hota hai jab critical infrastructure aise systems pe depend kare jo kahin aur build ki gayi hain?
-
-Except is baar...
-
-woh infrastructure telecommunications nahi hai.
-
-Intelligence hai — khud.
+Baat AI ki hai.
 
 ---
 
-# ENDING (9:30–10:15)
-
-**VISUALS:**
-Montage of AI labs, datacenters, developers coding, neural-network visuals slowly fading to black.
+# ENDING (8:45–9:30)
 
 **SCRIPT:**
 
-Toh ek second ke liye step back lete hain.
+Toh agar poori story ko ek line mein samjhein...
 
-Chinese AI achanak har cheez mein sabse smart nahi ban gaya.
+Chinese AI achanak duniya ka sabse intelligent AI nahi ban gaya.
 
-Absolute frontier pe, Claude Mythos aur GPT-5.5 abhi bhi lead karte hain.
+Frontier level par GPT-5.5 aur Claude Mythos jaise models abhi bhi lead karte hain.
 
-But yeh woh game nahi tha jo matter karta tha.
+Lekin yeh race sirf smartest model banane ki nahi thi.
 
-Jo game matter karta tha — woh tha default banana. Sabse sasta layer. Open layer. Woh foundation jiske upar baaki duniya quietly build karti hai.
+Yeh race thi default banne ki.
 
-Aur aath labs ne, same twelve-month window mein, same bet lagaya.
+Sabse accessible layer banne ki.
 
-Open weights. Aggressive pricing. Global distribution.
+Woh foundation banne ki jiske upar baaki duniya build kare.
 
-April ka woh week — jab duniya ke six sabse zyada use hone wale AI models sab Chinese the — koi anomaly nahi tha.
+Aur pichhle ek saal mein kai Chinese labs ne ek hi strategy follow ki.
+
+Open weights.
+
+Aggressive pricing.
+
+Global distribution.
+
+Aur jab ek hafte ke liye duniya ke sabse zyada use hone wale AI models Chinese the...
+
+woh koi random anomaly nahi thi.
 
 Woh ek signal tha.
 
-Sawaal yeh nahi hai ki in models ko use karna chahiye ya nahi — kaafi engineers already kar rahe hain.
+Aaj sawaal yeh nahi hai ki engineers in models ko use kar rahe hain ya nahi.
 
-Sawaal yeh hai: kya aap jaante hain aap kya build kar rahe hain — aur kis foundation pe?
+Kaafi log already kar rahe hain.
 
-Agar aur depth mein jaana chahte hain, description mein full benchmark aur pricing data link kiya hai.
+Asli sawaal yeh hai:
+
+Aap jo build kar rahe hain...
+
+woh kis foundation par build ho raha hai?
+
+Aur kya aap us foundation ko samajhte hain?
+
+Agar aur details dekhni hain, toh description mein benchmark aur pricing data ka link diya hua hai.
 
 **[FADE OUT]**
+
+This version should sound much smoother when spoken aloud and will likely keep viewers engaged better through the full 9–10 minutes.
