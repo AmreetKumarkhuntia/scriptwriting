@@ -1,6 +1,7 @@
 import { Composition } from "remotion";
 import { ChinaHook } from "./clips/ChinaHook";
 import { ChinaSection1 } from "./clips/ChinaSection1";
+import { ChinaSection2 } from "./clips/ChinaSection2";
 
 // Standalone motion-graphics clips for "China Takes Over AI".
 // Each clip is a full-screen replacement segment to drop onto the NLE timeline
@@ -23,6 +24,16 @@ export const ChinaCompositions: React.FC = () => {
         id="China-Section1"
         component={ChinaSection1}
         durationInFrames={3580}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* SECTION 2 — THE PLAYERS · cues 55–102 · 2:25–4:32 */}
+      <Composition
+        id="China-Section2"
+        component={ChinaSection2}
+        durationInFrames={3795}
         fps={30}
         width={1920}
         height={1080}
