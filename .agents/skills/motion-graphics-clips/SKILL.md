@@ -11,7 +11,7 @@ Use when building or editing the animated full-screen clips in
 `remotion-all/src/<Video>/` (e.g. `src/China/`). This is the **project-specific craft**:
 how clips are structured, the shared components, the camera/constellation patterns, and the
 gotchas learned building "China Takes Over AI". For generic Remotion API knowledge use the
-`remotion-best-practices` skill; for the visual design language see `motion-graphics-guide.md`.
+`remotion-best-practices` skill; for the visual design language see `docs/motion-graphics-guide.md`.
 
 ## Project layout
 

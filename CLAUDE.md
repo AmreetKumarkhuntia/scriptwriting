@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Purpose
 
-This is a YouTube video research and scriptwriting workspace. Each video project lives in its own folder (e.g., `China takes over AI/`). The research and scripting methodology is documented in `research-framework.md`.
+This is a YouTube video research and scriptwriting workspace. Each video project lives in its own folder (e.g., `China takes over AI/`). The research and scripting methodology is documented in `docs/research-framework.md`.
 
 ## Available MCP Tools
 
@@ -19,7 +19,7 @@ The `.mcp.json` configures four servers for the research workflow:
 
 ## Research & Scripting Workflow
 
-Follow `research-framework.md` for the full process. The short version:
+Follow `docs/research-framework.md` for the full process. The short version:
 
 1. **5W1H (Kipling Method)** — generate research questions before searching anything: What, Who, When, Where, Why, How. Not all six matter equally for every topic.
 2. **Research** — Google, Wikipedia, YouTube, books. Use Tavily/Perplexity for cited answers. Use Google Scholar / Consensus for scientific topics. Avoid Quora/Reddit as primary sources.
@@ -41,6 +41,6 @@ Each video idea gets its own directory. Place the following inside:
 
 Animated graphics for the videos are built in the **`remotion-all/`** Remotion project — one
 folder per video under `remotion-all/src/<VideoName>/` (e.g. `src/China/`), with one composition
-clip per script section. Follow `motion-graphics-guide.md` for the structure, the reusable
+clip per script section. Follow `docs/motion-graphics-guide.md` for the structure, the reusable
 component library, the Remotion gotchas, and the visual/craft design language. The generic
 Remotion API knowledge lives in the `remotion-best-practices` skill.
