@@ -15,7 +15,7 @@ That was 3 years ago.
 So... how many jobs has AI actually destroyed?
 
 [PAUSE]
-
+s
 According to Yale University and the Brookings Institution — two of America's most respected research institutions — there has been *zero* discernible disruption to overall employment since ChatGPT launched.
 
 Zero.
@@ -50,7 +50,7 @@ But that's not how economies work.
 
 Think about it this way. If AI makes writing cheaper, companies produce more content. More content means more editors, more strategists, more distributors, more platforms, more creators. The pie gets bigger.
 
-Or think about the spinning jenny — the machine that triggered the Luddite Rebellion in 1811. Fifty thousand textile workers rioted across England. They believed the machine would end their livelihoods.
+Or think about the power loom — one of the machines that triggered the Luddite Rebellion in 1811. Thousands of textile workers rioted across England. The British government deployed 12,000 troops to suppress them — more soldiers than Wellington had led into Portugal just three years earlier. They believed the machines would end their livelihoods.
 
 Two hundred years later, real wages had doubled and employment had exploded. The jobs the Luddites couldn't imagine — factory managers, quality inspectors, shipping clerks, railway workers — absorbed everyone the machines had "displaced."
 
@@ -62,7 +62,7 @@ This is the pattern. New technology does not shrink the amount of work. It chang
 
 ## SECTION 3: What The Data Actually Shows (4:30–6:30)
 
-Okay, but you might be thinking — this time it's different. AI is more powerful than the spinning jenny.
+Okay, but you might be thinking — this time it's different. AI is more powerful than the power loom.
 
 Fair point. So let's look at actual data from the last three years.
 
@@ -74,9 +74,9 @@ Here's what the data shows:
 
 **Two.** Industries with *higher* AI exposure — the ones supposedly most at risk — are actually growing jobs *faster* than average. In 2024, AI-exposed sectors saw 3.9% job growth and 4.8% wage growth. More exposure to AI, better outcomes for workers. The opposite of what the panic predicts.
 
-**Three.** In February 2026, AI was cited as the reason in only 10% of job cuts. The other 90%? Economic slowdowns, market conditions, strategic pivots. The usual reasons companies have always laid off people.
+**Three.** Through early 2026, AI was cited as the reason in roughly 8–10% of job cuts. The other 90%+? Economic slowdowns, market conditions, strategic pivots. The usual reasons companies have always laid off people.
 
-**Four.** The Dallas Federal Reserve surveyed leading economists in 2025. The consensus: AI will not majorly impact jobs "in the next decade."
+**Four.** A 2025 Dallas Federal Reserve research report concluded: AI will not majorly impact jobs "in the next decade."
 
 The apocalypse isn't here. Three years in, the data doesn't support the panic.
 
@@ -104,7 +104,7 @@ Here's the angle most coverage completely misses.
 
 The jobs AI genuinely cannot do — the ones with high resilience — are overwhelmingly blue-collar and physical.
 
-Electricians: 94% resilience score. Emergency responders: 97%. Surgeons, nurses, plumbers, HVAC technicians — all well above average safety. The reason is simple: these jobs require physical work in unpredictable environments, split-second judgment, and human trust. AI cannot send a robot into your house to fix your wiring. Not yet. Not for a long time.
+Electricians, emergency responders, surgeons, nurses, plumbers, HVAC technicians — consistently ranked among the least automatable jobs across every major study. The reason is simple: these jobs require physical work in unpredictable environments, split-second judgment, and human trust. AI cannot send a robot into your house to fix your wiring. Not yet. Not for a long time.
 
 The narrative we've been sold is that AI threatens low-skill workers. The data says the opposite: the jobs most threatened are *white-collar*, knowledge-based, routine cognitive work — not the trades.
 

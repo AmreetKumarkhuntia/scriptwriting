@@ -2,6 +2,8 @@ import "./index.css";
 import { Composition } from "remotion";
 import { Bond007 } from "./Bond007";
 import { ChinaCompositions } from "./China";
+import { AIJobsCompositions } from "./AIJobs";
+import { Fable5Compositions } from "./Fable5";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -15,6 +17,8 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
       <ChinaCompositions />
+      <AIJobsCompositions />
+      <Fable5Compositions />
     </>
   );
 };
