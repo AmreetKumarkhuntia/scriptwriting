@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Purpose
 
-This is a YouTube video research and scriptwriting workspace. Each video project lives in its own folder (e.g., `China takes over AI/`). The research and scripting methodology is documented in `docs/research-framework.md`.
+This is a YouTube video research and scriptwriting workspace. Each video project lives in its own folder under `videos/` (e.g., `videos/China takes over AI/`). The research and scripting methodology is documented in `docs/research-framework.md`.
 
 ## Available MCP Tools
 
