@@ -6,3 +6,6 @@ coverage/
 *.tmp
 *.env
 remotion-all/build/
+remotion-all/out/
+remotion-all/public/007clips
+.claude/settings.local.json

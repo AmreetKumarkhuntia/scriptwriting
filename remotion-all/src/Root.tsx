@@ -1,24 +1,18 @@
 import "./index.css";
-import { Composition } from "remotion";
-import { Bond007 } from "./Bond007";
+import { Bond007Compositions } from "./Bond007";
 import { ChinaCompositions } from "./China";
 import { AIJobsCompositions } from "./AIJobs";
 import { Fable5Compositions } from "./Fable5";
+import { AIBubbleCompositions } from "./AIBubble";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <Composition
-        id="Bond007"
-        component={Bond007}
-        durationInFrames={480}
-        fps={30}
-        width={1920}
-        height={1080}
-      />
+      <Bond007Compositions />
       <ChinaCompositions />
       <AIJobsCompositions />
       <Fable5Compositions />
+      <AIBubbleCompositions />
     </>
   );
 };

@@ -1,34 +1,19 @@
-import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
-import { GunBarrel } from "./GunBarrel";
-import { LogoReveal } from "./LogoReveal";
-import { BloodWash } from "./BloodWash";
-import { TitleCard } from "./TitleCard";
-import { Tagline } from "./Tagline";
+import { Composition } from "remotion";
+import { Bond007Reel } from "./Reel";
+import { reelDurationInFrames } from "./clips";
 
-export const Bond007: React.FC = () => {
-  const { fps } = useVideoConfig();
-
+// 007 First Light — Day 3 highlight reel (cold-open hook → 9 continuous story
+// beats → outro). 2560×1440 @ 30fps. Clips live in public/007clips/.
+// The old gun-barrel intro composition has been retired.
+export const Bond007Compositions: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: "#000" }}>
-      <Sequence durationInFrames={4 * fps}>
-        <GunBarrel />
-      </Sequence>
-
-      <Sequence from={4 * fps} durationInFrames={4 * fps}>
-        <LogoReveal />
-      </Sequence>
-
-      <Sequence from={7.5 * fps} durationInFrames={3 * fps}>
-        <BloodWash />
-      </Sequence>
-
-      <Sequence from={8 * fps} durationInFrames={4 * fps}>
-        <TitleCard />
-      </Sequence>
-
-      <Sequence from={12 * fps} durationInFrames={4 * fps}>
-        <Tagline />
-      </Sequence>
-    </AbsoluteFill>
+    <Composition
+      id="Bond007-Highlights"
+      component={Bond007Reel}
+      durationInFrames={reelDurationInFrames()}
+      fps={30}
+      width={2560}
+      height={1440}
+    />
   );
 };
