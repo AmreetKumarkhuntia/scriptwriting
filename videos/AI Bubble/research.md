@@ -70,6 +70,8 @@ _Last updated: June 13, 2026. Verify figures before scripting — this space mov
 
 Source: Calculated from [IntuitionLabs pricing](https://intuitionlabs.ai/articles/claude-pricing-plans-api-costs) + [PricePerToken.com](https://pricepertoken.com/subscription-calculator)
 
+> **On-screen figure (Claude Opus 4.8):** The script uses Opus — "Anthropic's most powerful model" — not Sonnet, so the power-user cost is higher. At Opus pricing ($5 in / $25 out per M tokens), a power user generating ~2M output tokens (~$50) plus context/input (~$10) lands at **~$60 in raw compute** vs. the **$20** subscription → a **~$40/month gap**. Use the $60 / $40-gap framing in the video and description; the Sonnet table above is the cheaper-model reference point.
+
 **Key insight:** Subscriptions are priced to attract users, not to make money. The company profits from light users and loses significantly on power users. The $20/month price point was set to drive adoption — and it worked. But the math only works if AI gets cheaper faster than user engagement grows.
 
 ---
