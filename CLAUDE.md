@@ -8,14 +8,25 @@ This is a YouTube video research and scriptwriting workspace. Each video project
 
 ## Available MCP Tools
 
-The `.mcp.json` configures four servers for the research workflow:
+The project `.mcp.json` configures these servers (all launched via `npx`):
 
-- **youtube-transcript** — fetch transcripts from YouTube videos (use for sourcing interviews, documentaries, talks)
 - **mcp-youtube** — search and retrieve YouTube metadata
+- **google-trends** — compare keywords, interest by region, related queries
 - **playwright** — browser automation for scraping articles and verifying sources
-- **tavily** — web search with citations; requires `TAVILY_API_KEY` set in `.mcp.json`
+- **remotion** — drive the `remotion-all/` motion-graphics project (scoped to `./remotion-all`)
 
-> Perplexity AI is preferred over raw LLM output for factual research because it shows citations. Use Tavily for the same reason when working within Claude Code.
+> For cited factual research, prefer tools that show their sources (e.g. Perplexity, or the
+> WebSearch/WebFetch tools) over raw LLM output. YouTube transcripts are pulled via the
+> `youtube-transcript-analysis` skill (yt-dlp), not an MCP server.
+
+### Blender (video editing) — Windows Claude only
+
+A `blender` MCP (`uvx blender-mcp`) drives Blender's Video Sequence Editor to cut clips, layer
+memes, add zoom punch-ins, and render. It is **not** in this `.mcp.json`: Blender and the MCP run on
+**Windows**, so it's registered in *Windows* Claude user scope (`claude mcp add blender -s user --
+uvx blender-mcp`) and reaches Blender on `localhost`. Editing runs from Windows Claude opening this
+repo via the `\\wsl.localhost` share. See [`docs/blender-video-editing.md`](docs/blender-video-editing.md)
+for the VSE recipes and the `/mnt/f` ⇔ `F:\` path rule.
 
 ## Research & Scripting Workflow
 
