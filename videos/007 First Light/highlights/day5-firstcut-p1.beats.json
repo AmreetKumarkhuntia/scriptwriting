@@ -1,0 +1,38 @@
+{
+  "project": "007 Day 5 — Part 1 — The Web HQ Heist — First Cut",
+  "fps": 60,
+  "width": 2560,
+  "height": 1440,
+  "windows_dir": "F:/recordings/007/day5 p1",
+  "reframe": { "scale": 1.5, "position": "-450 -260" },
+  "clips": [
+    { "name": "01_coldopen_thea",     "duration_s": 44 },
+    { "name": "02_setup_shutdown",    "duration_s": 234 },
+    { "name": "03_infiltrate_mole",   "duration_s": 85 },
+    { "name": "04_perch_gate",        "duration_s": 60 },
+    { "name": "05_mole_plan",         "duration_s": 104 },
+    { "name": "06_basilisk_safe",     "duration_s": 212 },
+    { "name": "07_damian_escape",     "duration_s": 253 },
+    { "name": "08_faraday_cage",      "duration_s": 72 },
+    { "name": "09_labcoat_mole",      "duration_s": 65 },
+    { "name": "10_the_reveal",        "duration_s": 267 },
+    { "name": "11_flightdeck_fight",  "duration_s": 145 },
+    { "name": "12_greenway_imout",    "duration_s": 75 },
+    { "name": "13_nullspace_debrief", "duration_s": 162 },
+    { "name": "14_vietnam_briefing",  "duration_s": 165 }
+  ],
+  "beats": [
+    { "clip": "01_coldopen_thea",     "kind": "zoom", "start_s": 14,  "end_s": 28,  "label": "1.35 million killed in car accidents — Thea's thesis" },
+    { "clip": "02_setup_shutdown",    "kind": "tune", "start_s": 194, "label": "banter: shouldn't break into a high-security building at night" },
+    { "clip": "03_infiltrate_mole",   "kind": "tune", "start_s": 42,  "label": "it's a simple mole — human weakness" },
+    { "clip": "06_basilisk_safe",     "kind": "tune", "start_s": 200, "label": "the command code is basilisk" },
+    { "clip": "07_damian_escape",     "kind": "zoom", "start_s": 4,   "end_s": 16,  "label": "you only have 4 minutes — you'll never make it" },
+    { "clip": "09_labcoat_mole",      "kind": "meme", "start_s": 30,  "label": "lab-coat / Ken Banks gag — drop a meme" },
+    { "clip": "10_the_reveal",        "kind": "zoom", "start_s": 152, "end_s": 168, "label": "1.35 million killed in car accidents" },
+    { "clip": "10_the_reveal",        "kind": "zoom", "start_s": 182, "end_s": 196, "label": "Player will attain perfection" },
+    { "clip": "12_greenway_imout",    "kind": "zoom", "start_s": 57,  "end_s": 71,  "label": "there is no we, bro — I'm out" },
+    { "clip": "13_nullspace_debrief", "kind": "tune", "start_s": 127, "label": "a black op to collect irrefutable proof" },
+    { "clip": "14_vietnam_briefing",  "kind": "zoom", "start_s": 152, "end_s": 164, "label": "We are in Vietnam — Chapter eight" }
+  ],
+  "_notes": "Clip-local seconds are derived from (VOD beat time - clip IN); approximate. Editor smooths zoom-to-face in DaVinci (1.0->1.5 over ~8-10 frames, cap ~1.6x). Reframe targets the baked-in bottom-right facecam. Durations reconciled against ffprobe after cutting."
+}
