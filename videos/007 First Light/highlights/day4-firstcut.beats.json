@@ -1,0 +1,51 @@
+{
+  "project": "007 Day 4 — First Cut",
+  "fps": 60,
+  "width": 2560,
+  "height": 1440,
+  "windows_dir": "F:/recordings/007/part 4",
+  "reframe": { "scale": 1.5, "position": "-450 -260" },
+  "apply_reframe_transform": false,
+
+  "clips": [
+    { "name": "01_shipwreck_lore",     "duration_s": 239 },
+    { "name": "02_safehouse_evidence", "duration_s": 464 },
+    { "name": "03_firefight_start",    "duration_s": 58  },
+    { "name": "04_landrover_backup",   "duration_s": 135 },
+    { "name": "05_heavy_driver_kill",  "duration_s": 86  },
+    { "name": "06_aftermath_gohome",   "duration_s": 230 },
+    { "name": "07_apartment_hit",      "duration_s": 293 },
+    { "name": "08_rooftop_chase",      "duration_s": 328 },
+    { "name": "09_gala_infiltration",  "duration_s": 398 },
+    { "name": "10_cctv_simon",         "duration_s": 40  },
+    { "name": "11_cctv_hack",          "duration_s": 183 },
+    { "name": "12_archives_kill",      "duration_s": 97  },
+    { "name": "13_web_meet",           "duration_s": 184 },
+    { "name": "14_damian_banter",      "duration_s": 483 },
+    { "name": "15_window_escape",      "duration_s": 190 },
+    { "name": "16_backlot_gunfight",   "duration_s": 155 },
+    { "name": "17_artifact_ai_exhibit","duration_s": 77  },
+    { "name": "18_car_getaway",        "duration_s": 203 },
+    { "name": "19_perch_finale",       "duration_s": 239 }
+  ],
+
+  "beats": [
+    { "clip": "02_safehouse_evidence", "kind": "zoom", "start_s": 438, "end_s": 448, "label": "009 wasn't the culprit, he was the target" },
+    { "clip": "14_damian_banter",      "kind": "zoom", "start_s": 124, "end_s": 134, "label": "Never accept a drink from a stranger" },
+    { "clip": "14_damian_banter",      "kind": "zoom", "start_s": 293, "end_s": 303, "label": "Make them disappear" },
+    { "clip": "19_perch_finale",       "kind": "zoom", "start_s": 189, "end_s": 197, "label": "I don't feel so good, actually" },
+
+    { "clip": "01_shipwreck_lore",     "kind": "tune", "start_s": 35,  "label": "Roth lore — Operation Knife/Nightfall, the 009 mole hunt" },
+    { "clip": "06_aftermath_gohome",   "kind": "tune", "start_s": 195, "label": "we just put three agents in the ground... go home" },
+    { "clip": "07_apartment_hit",      "kind": "tune", "start_s": 120, "label": "Monroe's note — they're gone because of my mistakes" },
+    { "clip": "13_web_meet",           "kind": "tune", "start_s": 65,  "label": "the speech + watch hack" },
+
+    { "clip": "09_gala_infiltration",  "kind": "meme", "start_s": 120, "label": "press-pass gambit — posing as journalist Mike Chatzfield" },
+    { "clip": "10_cctv_simon",         "kind": "meme", "start_s": 15,  "label": "Simon says... feet or head first, you choose" },
+    { "clip": "11_cctv_hack",          "kind": "meme", "start_s": 30,  "label": "password-on-a-post-it gag" },
+    { "clip": "15_window_escape",      "kind": "meme", "start_s": 60,  "label": "my eyeballs! gag" },
+    { "clip": "17_artifact_ai_exhibit","kind": "meme", "start_s": 55,  "label": "Damian's dogs, I presume" }
+  ],
+
+  "_notes": "Exact times: zoom beats on 02/14/19 are derived from cut-list timecodes (VOD - clip IN). 'tune' = a labelled marker where a zoom-to-face would land but the clip-local time is approximate (refine from a transcript pass). 'meme' times are approximate placeholders. Only 'zoom' beats split the clip + apply the reframe transform; tune/meme are markers only."
+}
