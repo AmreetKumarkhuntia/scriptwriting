@@ -122,7 +122,8 @@ yt-dlp --no-update -f "400+251/308+251/bestvideo[height<=1440]+bestaudio" \
 ## Status
 - [x] Transcript pulled + scanned (8h), master rundown written
 - [x] Split chosen (03:13:58), beats assigned, durations budgeted
-- [ ] Full VOD downloaded (in progress)
-- [ ] Clips cut (both parts) + contact-sheet verified + durations ffprobe-confirmed
-- [ ] Two beats.json manifests + two FCPXMLs generated (runtime 30–45 min each)
-- [ ] Editplan + edit-handoff written
+- [~] Full VOD downloaded — **first download was truncated** (10GB; decodable only through ~03:14, corrupt 03:40→08:00). Re-downloading the full 19.88 GiB to `007_day5_full_redl.mp4`.
+- [x] **Part 1 cut + verified** — 14 clips → `day5 p1/`, all decodable, durations match manifest exactly (Σ=1943s≈32.4min), contact sheet verified (boundaries land in-scene, facecam intact), P1 FCPXML regenerated (~32.4 min, 6 zooms, 11 markers). *Cuttable because all P1 beats sit in the intact first ~3h of the partial VOD.*
+- [ ] **Part 2 cut** — BLOCKED on the full re-download (P2 footage 03:18→08:01 is not in the partial). Then contact-sheet + ffprobe-confirm.
+- [x] Two beats.json manifests + two FCPXMLs generated (P2 FCPXML will be regenerated after its clips are cut)
+- [x] Editplan + edit-handoff written

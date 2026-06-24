@@ -10,7 +10,7 @@ No motion graphics. The user eases the push-ins and tunes the reframe by hand.
 Usage:
     python3 scripts/firstcut_fcpxml.py <manifest.json> <out.fcpxml>
 
-Manifest shape: see videos/007 First Light/highlights/day4-firstcut.beats.json
+Manifest shape: see channels/Amreet Aint/videos/007 First Light/highlights/day4-firstcut.beats.json
 Notes are rational at the timeline fps (frames/fps "s"). DaVinci runs on Windows, so asset
 paths are written as Windows file:// URLs built from manifest "windows_dir".
 """
