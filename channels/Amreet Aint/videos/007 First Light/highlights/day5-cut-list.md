@@ -122,8 +122,12 @@ yt-dlp --no-update -f "400+251/308+251/bestvideo[height<=1440]+bestaudio" \
 ## Status
 - [x] Transcript pulled + scanned (8h), master rundown written
 - [x] Split chosen (03:13:58), beats assigned, durations budgeted
-- [~] Full VOD downloaded — **first download was truncated** (10GB; decodable only through ~03:14, corrupt 03:40→08:00). Re-downloading the full 19.88 GiB to `007_day5_full_redl.mp4`.
-- [x] **Part 1 cut + verified** — 14 clips → `day5 p1/`, all decodable, durations match manifest exactly (Σ=1943s≈32.4min), contact sheet verified (boundaries land in-scene, facecam intact), P1 FCPXML regenerated (~32.4 min, 6 zooms, 11 markers). *Cuttable because all P1 beats sit in the intact first ~3h of the partial VOD.*
-- [ ] **Part 2 cut** — BLOCKED on the full re-download (P2 footage 03:18→08:01 is not in the partial). Then contact-sheet + ffprobe-confirm.
-- [x] Two beats.json manifests + two FCPXMLs generated (P2 FCPXML will be regenerated after its clips are cut)
+- [x] Full VOD downloaded — first download was truncated (10GB; corrupt 03:40→08:00). **Re-downloaded the full 8h** (21GB, dur 08:03:10, all P2 timestamps decode); corrupt partial deleted, good file promoted to `007_day5_full.mp4`.
+- [x] **Part 1 cut + verified** — 14 clips → `day5 p1/`, all decodable, durations match manifest exactly (Σ=1943s≈32.4min), contact sheet verified (boundaries land in-scene, facecam intact), P1 FCPXML regenerated (~32.4 min, 6 zooms, 11 markers).
+- [x] **Part 2 cut + verified** — 14 clips → `day5 p2/`, all decodable, durations match manifest exactly (Σ=1888s≈31.5min), P2 FCPXML regenerated (~31.5 min, 6 zooms, 14 markers). Contact sheet: 13/14 boundaries land in-scene. **⚠ OPEN: `13_sc9_finale` opens on a "MISSION FAILED" retry screen** — the IN (07:52:30) caught a boss-fight death; nudge IN forward to the successful SC9 kill (the kill cutscene sits before `14_ending_returns` @ 07:58:20).
+- [x] Two beats.json manifests + two FCPXMLs generated
 - [x] Editplan + edit-handoff written
+
+### Open follow-ups (next session)
+1. **Re-cut `13_sc9_finale`** — find the real SC9 boss-kill timecode in 07:52:30–07:58:20 (skip the MISSION FAILED retries), update its `enc` IN + `duration_s`, regenerate the P2 FCPXML.
+2. Optional: confirm `02_vietnam_arrival` opens cleanly (IN is the chapter-card transition — likely fine, glance on video).
