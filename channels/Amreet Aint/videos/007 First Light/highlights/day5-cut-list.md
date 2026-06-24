@@ -75,10 +75,10 @@ enc 14_vietnam_briefing  03:11:20  165
 | 10 | `10_hostage_fight` | 07:01:50 | 100 | "There are hostages here." Firefight peak. (nudged on video) | action |
 | 11 | `11_son_reveal` | 07:15:40 | 108 | **CLIMAX:** Web's son — "my legacy all gone, all except good old Thea… buyers lined up… all thanks to you"; "this guy looks like Greenway?!" | story |
 | 12 | `12_flood_warning` | 07:39:51 | 84 | "You're flooding the tunnels — you'll kill everyone." "Enough water to turn MI6 underground into a fish tank." | action/story |
-| 13 | `13_sc9_finale` | 07:52:30 | 120 | SC9 boss climax / kill. (peak nudged on video) | action |
+| 13 | `13_sc9_finale` | 07:54:06 | 252 | SC9 boss **takedown cutscene** → confrontation → underwater finale → aftermath (unbroken ~4 min; IN is the first cutscene frame after the win, OUT butts to #14). | action/story |
 | 14 | `14_ending_returns` | 07:58:20 | 175 | "Since I was the seventh recruit… 007." Credits: "James Bond will return." | story |
 
-**P2 total ≈ 1888 s ≈ 31.5 min** (incl. 44s cold open).
+**P2 total ≈ 2020 s ≈ 33.7 min** (incl. 44s cold open).
 
 ### Part 2 enc() recipe
 ```bash
@@ -97,7 +97,7 @@ enc 09_crisis_quote      06:43:45  155
 enc 10_hostage_fight     07:01:50  100
 enc 11_son_reveal        07:15:40  108
 enc 12_flood_warning     07:39:51  84
-enc 13_sc9_finale        07:52:30  120
+enc 13_sc9_finale        07:54:06  252
 enc 14_ending_returns    07:58:20  175
 ```
 
@@ -124,10 +124,10 @@ yt-dlp --no-update -f "400+251/308+251/bestvideo[height<=1440]+bestaudio" \
 - [x] Split chosen (03:13:58), beats assigned, durations budgeted
 - [x] Full VOD downloaded — first download was truncated (10GB; corrupt 03:40→08:00). **Re-downloaded the full 8h** (21GB, dur 08:03:10, all P2 timestamps decode); corrupt partial deleted, good file promoted to `007_day5_full.mp4`.
 - [x] **Part 1 cut + verified** — 14 clips → `day5 p1/`, all decodable, durations match manifest exactly (Σ=1943s≈32.4min), contact sheet verified (boundaries land in-scene, facecam intact), P1 FCPXML regenerated (~32.4 min, 6 zooms, 11 markers).
-- [x] **Part 2 cut + verified** — 14 clips → `day5 p2/`, all decodable, durations match manifest exactly (Σ=1888s≈31.5min), P2 FCPXML regenerated (~31.5 min, 6 zooms, 14 markers). Contact sheet: 13/14 boundaries land in-scene. **⚠ OPEN: `13_sc9_finale` opens on a "MISSION FAILED" retry screen** — the IN (07:52:30) caught a boss-fight death; nudge IN forward to the successful SC9 kill (the kill cutscene sits before `14_ending_returns` @ 07:58:20).
+- [x] **Part 2 cut + verified** — 14 clips → `day5 p2/`, all decodable, durations match manifest exactly (Σ=2020s≈33.7min), P2 FCPXML regenerated (~33.7 min, 7 zooms, 15 markers).
+- [x] **`13_sc9_finale` re-cut (FIXED)** — the old IN (07:52:30) opened on a "MISSION FAILED" retry screen. Frame-scanned 07:51:30–07:58:30: the MISSION FAILED death is at 07:52:30, a retry firefight runs to ~07:54:00, then the **successful takedown cutscene starts at 07:54:06** (HUD drops; pinned at 2s granularity — HUD still up at 07:54:04, gone by 07:54:06) and runs unbroken ~4 min through the confrontation → underwater finale (07:57:50) → aftermath, into `14_ending_returns` @ 07:58:20. New cut: **IN 07:54:06, 252s** (OUT 07:58:18, 2s gap before #14). Re-verified: clip IN = cinematic takedown (no fail screen), OUT = aftermath, facecam intact; added a zoom-to-face on the takedown reaction (clip-local 2–16s).
 - [x] Two beats.json manifests + two FCPXMLs generated
 - [x] Editplan + edit-handoff written
 
-### Open follow-ups (next session)
-1. **Re-cut `13_sc9_finale`** — find the real SC9 boss-kill timecode in 07:52:30–07:58:20 (skip the MISSION FAILED retries), update its `enc` IN + `duration_s`, regenerate the P2 FCPXML.
-2. Optional: confirm `02_vietnam_arrival` opens cleanly (IN is the chapter-card transition — likely fine, glance on video).
+### Open follow-ups
+1. Optional: confirm `02_vietnam_arrival` opens cleanly (IN is the chapter-card transition — likely fine, glance on video in DaVinci).
