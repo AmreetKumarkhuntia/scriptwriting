@@ -1,13 +1,12 @@
-# 007 Day 5 — First-Cut Edit Plan (DaVinci Resolve)
+# 007 Day 5 · Part 1 — First-Cut Edit Plan (DaVinci Resolve) — "The Web HQ Heist"
 
-Companion to the two generated FCPXMLs. Each is a **first cut**: clips butted end-to-end in story order, razor-cut at each beat, with a pre-applied **zoom-to-face** reframe on the marquee lines and a labelled marker at every beat. You polish from here.
+Companion to the generated FCPXML. It's a **first cut**: clips butted end-to-end in story order, razor-cut at each beat, with a pre-applied **zoom-to-face** reframe on the marquee lines and a labelled marker at every beat. You polish from here. (Part 2 is in `../day5 p2/`.)
 
 - Part 1: `F:\recordings\007\day5 p1\007_day5_p1_firstcut.fcpxml` — ~32.4 min, 14 clips, 6 zoom segments
-- Part 2: `F:\recordings\007\day5 p2\007_day5_p2_firstcut.fcpxml` — ~31.5 min, 14 clips, 6 zoom segments
 
 ## Open in DaVinci Resolve (free)
 1. New project → **File ▸ Import ▸ Timeline…** → pick the `.fcpxml`.
-2. If media shows offline, relink the timeline to the clips folder (`F:\recordings\007\day5 p1\` or `day5 p2\`). The FCPXML already points there via `file:///F:/...` URLs.
+2. If media shows offline, relink the timeline to the clips folder (`F:\recordings\007\day5 p1\`). The FCPXML already points there via `file:///F:/...` URLs.
 3. Timeline is **2560×1440 @ 60 fps**. Every beat has a labelled marker (jump with ↑/↓).
 
 ## Zoom-to-face (the pre-applied move)
@@ -33,28 +32,12 @@ The clip-local times are transcript-derived (±a couple seconds) — scrub each 
 **tune (marker only — add a zoom if it lands):** 02_setup_shutdown @194 (banter); 03_infiltrate_mole @42 (simple mole); 06_basilisk_safe @200 (basilisk); 13_nullspace_debrief @127 (black op).
 **MEME:** 09_labcoat_mole @30 (lab-coat / Ken Banks gag).
 
-## Part 2 — beats
-**ZOOM (reframe pre-applied):**
-| clip | local | line |
-|---|---|---|
-| 01_coldopen_newlook | 2–16 | "how do you like the new look?" |
-| 04_villa_ellis | 46–60 | "I could sure as hell try" |
-| 09_crisis_quote | 64–80 | "never let a good crisis go to waste" |
-| 11_son_reveal | 8–22 | "how do you like the new look?" |
-| 11_son_reveal | 60–74 | "all thanks to you — how does it feel, James?" |
-| 14_ending_returns | 98–112 | "...007" |
-
-**tune:** 02_vietnam_arrival @38 (Chapter eight); 03_pearl_ledger @100 (who Web is here to kill); 05_hyperion_core @50 (magic key); 06_isa_backstory @66 (the plane); 07_aria_factory @54 (Aria); 12_flood_warning @9 (fish tank); 14_ending_returns @163 ("James Bond will return").
-**MEME:** 03_pearl_ledger @85 ($1,000 bourbon).
-
-## Regenerate (after editing a manifest)
+## Regenerate (after editing the manifest)
 ```bash
 cd "/home/amreet_khuntia/repos/scriptwriting"
-python3 scripts/firstcut_fcpxml.py "videos/007 First Light/highlights/day5-firstcut-p1.beats.json" "/mnt/f/recordings/007/day5 p1/007_day5_p1_firstcut.fcpxml"
-python3 scripts/firstcut_fcpxml.py "videos/007 First Light/highlights/day5-firstcut-p2.beats.json" "/mnt/f/recordings/007/day5 p2/007_day5_p2_firstcut.fcpxml"
+python3 scripts/firstcut_fcpxml.py "videos/007 First Light/highlights/day5 p1/firstcut.beats.json" "/mnt/f/recordings/007/day5 p1/007_day5_p1_firstcut.fcpxml"
 ```
-The generator prints clip count, total runtime, zoom-segment and marker counts — use the runtime as the authoritative length check (target 30–45 min each).
+The generator prints clip count, total runtime, zoom-segment and marker counts — use the runtime as the authoritative length check (target 30–45 min).
 
-## Render targets
+## Render target
 - Part 1 → `F:\recordings\007\007_day5_p1_edit.mp4`
-- Part 2 → `F:\recordings\007\007_day5_p2_edit.mp4`

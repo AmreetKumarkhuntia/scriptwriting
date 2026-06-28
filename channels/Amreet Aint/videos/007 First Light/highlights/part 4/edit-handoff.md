@@ -1,6 +1,6 @@
 # 007 First Light — Day 4 · EDIT HANDOFF
 
-Read this first, then `day4-cut-list.md` for full beat detail/quotes.
+Read this first, then `cut-list.md` (same folder) for full beat detail/quotes.
 
 ## What's already done (input is READY)
 
@@ -19,7 +19,7 @@ were added** — that's intentional and is the editor's call from here.
 |------|----------|------------------------|
 | **Cut clips (edit these)** | `/mnt/f/recordings/007/part 4/` | `F:\recordings\007\part 4\` |
 | Full VOD archive (re-cut source) | `/mnt/f/recordings/007/007_day4_full.mp4` (5.7 GB) | `F:\recordings\007\007_day4_full.mp4` |
-| Cut list + verbatim quotes | `videos/007 First Light/highlights/day4-cut-list.md` | same via `\\wsl.localhost\Ubuntu\…` |
+| Cut list + verbatim quotes | `videos/007 First Light/highlights/part 4/cut-list.md` | same via `\\wsl.localhost\Ubuntu\…` |
 | Source VOD online | <https://www.youtube.com/live/Q1rz778nbfY> | — |
 
 > Editing runs from **Windows Claude** in Blender VSE (the `blender` MCP), per
@@ -60,7 +60,7 @@ were added** — that's intentional and is the editor's call from here.
 - **Best moments to feature first** (cold-open candidates): `08_rooftop_chase`
   ("Faster, James!"), `14_damian_banter`, `19_perch_finale` poison gag.
 
-## To re-cut any clip (boundaries are in day4-cut-list.md)
+## To re-cut any clip (boundaries are in cut-list.md)
 
 ```bash
 SRC="/mnt/f/recordings/007/007_day4_full.mp4"

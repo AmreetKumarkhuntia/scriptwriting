@@ -1,8 +1,8 @@
 # Amreet Aint — Growth Strategy (Hindi Horror Gameplay)
 
-> Research deliverable, 2026-06-24. Sources: vidIQ (demand/breakout/saturation), Google Trends India,
-> and web validation — all adversarially vetted. This is the canonical strategy doc; start future
-> gaming-growth work here.
+> Research deliverable, 2026-06-24 · **trend re-check 2026-06-25**. Sources: vidIQ (demand/breakout/
+> saturation), Google Trends India, and web validation — all adversarially vetted. This is the canonical
+> strategy doc; start future gaming-growth work here.
 
 ## TL;DR
 A **855-sub Hindi/Hinglish** gaming channel grows fastest in the **Hindi horror-gameplay** lane — it's the
@@ -30,6 +30,11 @@ Island" query is owned by a **Total Gaming 1M-view dub**; Google Trends India �
   `poppy playtime chapter 5` fades 60→18. Its India queries are **Hindi-native** — *"granny wala game",
   "granny ka game", "granny grandpa game"* — and all flagged **Breakout**. That's a real small-Hindi-channel
   lane, not a giant-owned English one.
+- **Trend re-check (2026-06-25, geo=IN, `now 7-d`):** confirmed. Inside the `horror game` category,
+  `granny game` is the **#1 rising (Breakout) query** in India — above every other horror-game term;
+  Granny's own queries stay Hindi-native + mobile/download-heavy and all Breakout (`granny wala game`,
+  `granny ka game`, `granny grandpa game`, `granny game apk`). Corroborating Breakouts: `indian horror game`,
+  `eyes horror game`, `grandpa horror game` (validates the Indian-setting priority + the evergreen cluster).
 - **Fit:** **solo**, PC + mobile, ~30-min escape loops → trivially cut to a tight **10 min**. Clean dupe
   (jumpscare-escape is a new genre for this channel vs its narrative horror). Refresh angle: the **newest
   version / current viral wave** (frequent updates; *Granny: Escape Together* coming to PS5/Xbox keeps it hot).

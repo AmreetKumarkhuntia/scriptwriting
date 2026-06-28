@@ -56,9 +56,9 @@ to source them). Times approximate.
 | `09_gala_infiltration` | 2:00 | press-pass gambit — posing as journalist "Mike Chatzfield" |
 
 ## Regenerating
-Edit `day4-firstcut.beats.json` (in the repo, copy here) and re-run:
+Edit `firstcut.beats.json` (this folder, copy to Windows) and re-run:
 ```
-python3 scripts/firstcut_fcpxml.py "videos/007 First Light/highlights/day4-firstcut.beats.json" \
+python3 scripts/firstcut_fcpxml.py "videos/007 First Light/highlights/part 4/firstcut.beats.json" \
   "/mnt/f/recordings/007/part 4/007_day4_firstcut.fcpxml"
 ```
 `kind` values: `zoom` = split + reframe + marker · `tune` = marker only (zoom spot, approx) ·
