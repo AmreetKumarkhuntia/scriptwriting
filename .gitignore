@@ -8,4 +8,4 @@ coverage/
 remotion-all/build/
 remotion-all/out/
 remotion-all/public/007clips
-.claude/settings.local.json
+.claude/settings.local.json__pycache__/
