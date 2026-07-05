@@ -5,6 +5,9 @@ import { AIJobsSection2 } from "./clips/AIJobsSection2";
 import { AIJobsSection3 } from "./clips/AIJobsSection3";
 import { AIJobsSection4 } from "./clips/AIJobsSection4";
 import { AIJobsSection5 } from "./clips/AIJobsSection5";
+import { AIJobsReel1 } from "./clips/AIJobsReel1";
+import { AIJobsReel1Hybrid } from "./clips/AIJobsReel1Hybrid";
+import { AIJobsReel1Talk } from "./clips/AIJobsReel1Talk";
 
 // Standalone motion-graphics clips for "AI Jobs Fear" (Hindi 5-min cut).
 // Each clip is a full-screen segment to drop onto the NLE timeline over the
@@ -12,6 +15,36 @@ import { AIJobsSection5 } from "./clips/AIJobsSection5";
 export const AIJobsCompositions: React.FC = () => {
   return (
     <>
+      {/* SHORT — HERO REEL · re-voiced English · self-contained (baked VO) ·
+          1080×1920 @ 30fps · funnels back to the parent long-form. */}
+      <Composition
+        id="AIJobs-Reel1"
+        component={AIJobsReel1}
+        durationInFrames={570}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* SHORT — HERO REEL · HYBRID (face test) · graphics hook hands off to a
+          real facecam clip · 1080×1920 @ 30fps */}
+      <Composition
+        id="AIJobs-Reel1-Hybrid"
+        component={AIJobsReel1Hybrid}
+        durationInFrames={495}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* SHORT — HERO REEL · TALKING-HEAD (his recording is the spine, graphics
+          only support) · 1080×1920 @ 30fps */}
+      <Composition
+        id="AIJobs-Reel1-Talk"
+        component={AIJobsReel1Talk}
+        durationInFrames={555}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       {/* SECTION 0 — HOOK · cues 1–13 · 0:00–0:37 */}
       <Composition
         id="AIJobs-Hook"

@@ -1,6 +1,6 @@
 # Research: The AI Kill Switch (Fable 5 Shutdown)
 
-_Last updated: June 17 2026. Fast-moving story — **re-verify reinstatement status** right before scripting (model was still offline on this date)._
+_Last updated: July 4 2026. Fast-moving story. **Update (Jul 1):** Fable 5 is back; GPT-5.6 limited too — see §6._
 
 > **Framing note:** The hard spine here is verifiable and well-sourced (the order, the legal mechanism, the timeline, Palantir's contracts). The *motive* details (exactly what Amazon's jailbreak extracted, what's said behind closed doors) come via reporting and named officials — attribute them ("per Axios", "Fortune reports", "David Sacks said"). The thesis layer (who controls the switch, what it means for open/Chinese AI) is argued opinion — label it as such.
 
@@ -67,9 +67,8 @@ _Last updated: June 17 2026. Fast-moving story — **re-verify reinstatement sta
 
 | Question | What we know (June 17 2026) | Source |
 |----------|------------------------------|--------|
-| Is Fable 5 back? | **Still offline.** Reinstatement contingent on Anthropic patching the jailbreak + a BIS license. | [explainx](https://explainx.ai/blog/when-will-fable-5-be-available-again-2026) |
-| Odds of return | Polymarket: **~75%** restored by **July 1 2026** | [Polymarket](https://polymarket.com/event/claude-fable-5-restored-for-us-customers-by-20260613193753196), [Gate News](https://www.gate.com/news/detail/claude-fable-5-faces-export-controls-polymarket-predicts-a-75-chance-of-a-21855671) |
-| Are other labs next? | Rumors of GPT-5.6; question whether GPT-5.5 / Gemini face similar scrutiny | several creator videos (unconfirmed) |
+| Is Fable 5 back? | **YES — restored July 1 2026.** Commerce lifted the export controls the evening of Jun 30; Fable 5 rolled out worldwide Jul 1 (limited quota through Jul 7) after Anthropic shipped a new classifier blocking the jailbreak in **99%+** of cases. **Mythos 5 only reinstated for approved US organizations.** 19-day shutdown. | [Anthropic](https://www.anthropic.com/news/fable-mythos-access), [MarkTechPost](https://www.marktechpost.com/2026/07/01/anthropic-redeploys-claude-fable-5-on-july-1-after-us-export-controls-lift-adds-new-cybersecurity-classifier/), [Al Jazeera](https://www.aljazeera.com/economy/2026/7/1/us-lifts-restrictions-on-powerful-ai-models-fable-mythos-anthropic-says), [Cybernews](https://cybernews.com/ai-news/us-ends-anthropic-fable-5-mythos-5-export-controls/) |
+| Are other labs next? | **YES — OpenAI, but softer.** ~Jun 25 the **White House *requested*** (not a legally binding order) that OpenAI limit its new **GPT-5.6** models — **Sol, Terra, Luna** — to a "small group of trusted partners" due to advanced capabilities. OpenAI **complied voluntarily**. Confirms the switch is now an industry-wide pattern, not an Anthropic one-off. Attribute the request/voluntary distinction. | [CNN](https://www.cnn.com/2026/06/25/tech/openai-limit-release-white-house), [CNBC](https://www.cnbc.com/2026/06/26/openai-limits-new-ai-models-to-trusted-partners-request-us-government.html), [Cybernews](https://cybernews.com/ai-news/openai-new-models-us-gov-request/) |
 | EU / sovereignty angle | IAPP: "a security challenge in need of governance, **certainly not Europe's kill switch**" | [IAPP](https://iapp.org/news/a/the-anthropic-episode-probably-a-security-challenge-in-need-of-governance-certainly-not-europe-s-kill-switch) |
 | Exact license class / ECCN | Not confirmed publicly — check BIS filings if needed | — |
 
