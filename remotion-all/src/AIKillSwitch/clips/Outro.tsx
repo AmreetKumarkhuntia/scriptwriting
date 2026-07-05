@@ -44,8 +44,10 @@ export const Outro: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: noir.void }}>
       <SfxTrack
         cues={[
-          { cue: "boom", at: OFF_AT, volume: 0.45 },
-          { cue: "boom", at: ON_AT, volume: 0.45 },
+          { cue: "switchOff", at: OFF_AT },
+          { cue: "boom", at: OFF_AT, volume: 0.35 },
+          { cue: "switchOn", at: ON_AT },
+          { cue: "boom", at: ON_AT, volume: 0.35 },
           { cue: "whoosh", at: 120, volume: 0.35 },
           { cue: "riser", at: 148, volume: 0.4 },
           { cue: "swoosh", at: 170, volume: 0.35 },

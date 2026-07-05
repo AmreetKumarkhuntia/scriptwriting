@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { fonts, noir } from "../theme";
 import { Board } from "../mg/Board";
 import { MoStage, MoKey, WorldAnchor } from "../mg/Stage";
@@ -51,6 +51,17 @@ export const StampGate: React.FC = () => {
       <EnterExit>
         <Board />
         <MoStage keys={CAM}>
+          {/* board recedes as the kinetic irony beat takes the frame */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: interpolate(frame, [158, 172], [1, 0.22], {
+                extrapolateLeft: "clamp",
+                extrapolateRight: "clamp",
+              }),
+            }}
+          >
           {/* the license document */}
           <WorldAnchor x={DOC.x} y={470} width={620}>
             <div
@@ -134,6 +145,7 @@ export const StampGate: React.FC = () => {
                 RIPPED OUT
               </div>
             </Panel>
+          </div>
           </div>
         </MoStage>
 

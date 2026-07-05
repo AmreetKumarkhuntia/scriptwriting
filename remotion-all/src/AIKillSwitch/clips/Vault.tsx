@@ -109,7 +109,7 @@ export const Vault: React.FC = () => {
         <Board />
         <MoStage keys={CAM} worldW={WORLD_W} worldH={WORLD_H}>
           {/* law header over the wall */}
-          <WorldAnchor x={1500} y={300} width={2400}>
+          <WorldAnchor x={1500} y={430} width={2400}>
             <div
               style={{
                 fontFamily: fonts.display,

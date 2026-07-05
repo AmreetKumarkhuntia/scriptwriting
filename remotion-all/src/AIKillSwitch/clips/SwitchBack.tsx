@@ -66,7 +66,8 @@ export const SwitchBack: React.FC = () => {
           { cue: "swoosh", at: 20, volume: 0.3 },
           { cue: "pop", at: 62 }, // second letter
           { cue: "rise", at: 92, volume: 0.4 },
-          { cue: "boom", at: SLAM }, // slam ON
+          { cue: "switchOn", at: SLAM }, // the literal breaker
+          { cue: "boom", at: SLAM, volume: 0.45 },
           { cue: "flare", at: 148 }, // gauge lights
           { cue: "whoosh", at: 282, volume: 0.4 },
           { cue: "alert", at: 300 }, // Mythos still gated

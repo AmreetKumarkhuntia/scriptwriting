@@ -103,7 +103,7 @@ export const ImpactFlash: React.FC<{ at: number; color?: string }> = ({
   if (o <= 0.001) return null;
   return (
     <AbsoluteFill
-      style={{ background: color, opacity: o, pointerEvents: "none", zIndex: 50 }}
+      style={{ background: color, opacity: o, pointerEvents: "none", zIndex: 35 }}
     />
   );
 };

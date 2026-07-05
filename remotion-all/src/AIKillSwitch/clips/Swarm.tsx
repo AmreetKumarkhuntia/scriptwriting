@@ -98,7 +98,7 @@ export const Swarm: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: noir.void }}>
       <SfxTrack
         cues={[
-          { cue: "pop", at: PULL + 4 },
+          { cue: "cable", at: PULL }, // the yank
           { cue: "alert", at: PULL + 10, volume: 0.25 },
           { cue: "whoosh", at: 112, volume: 0.4 },
           { cue: "riserBig", at: IGNITE - 12 },

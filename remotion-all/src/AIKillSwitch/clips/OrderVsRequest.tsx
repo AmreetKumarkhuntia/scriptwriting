@@ -5,7 +5,7 @@ import { fonts, noir } from "../theme";
 import { Board } from "../mg/Board";
 import { MoStage, MoKey } from "../mg/Stage";
 import { rev } from "../mg/motion";
-import { ClampGlyph, Panel, PanelSub, PanelTitle, StampRing } from "../mg/Cards";
+import { Panel, PanelSub, PanelTitle, StampRing } from "../mg/Cards";
 import { EnterExit, ImpactFlash, Letterbox, Vignette } from "../components/Frame";
 import { DateSuper, PaperChip, Sub } from "../components/Type";
 import { SfxTrack } from "../components/Sfx";
@@ -15,8 +15,8 @@ import { SfxTrack } from "../components/Sfx";
 // A comparison board — STATIC framing (gentle push only):
 //   left: ANTHROPIC dossier takes a red ORDER stamp (f58)
 //   right: OPENAI dossier gets a floating REQUEST note (f118)
-//   one clamp glyph above BOTH tightens (f150–205)
-//   → "DO COMPANIES · DO HAFTE · EK HAATH"
+//   puppet strings from ONE point draw down to BOTH cards and pull
+//   taut (f150–205) → "DO COMPANIES · DO HAFTE · EK HAATH"
 // ---------------------------------------------------------------------------
 
 // comparison → both cards stay framed; gentle push only
@@ -28,7 +28,9 @@ const CAM: MoKey[] = [
 export const OrderVsRequest: React.FC = () => {
   const frame = useCurrentFrame();
 
-  const tighten = interpolate(frame, [150, 205], [0.45, 0.95], {
+  // strings draw on, then pull taut (sag → straight) as the pattern lands
+  const stringP = rev(frame, 150, 18);
+  const taut = interpolate(frame, [150, 205], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -51,17 +53,48 @@ export const OrderVsRequest: React.FC = () => {
       <EnterExit>
         <Board />
         <MoStage keys={CAM}>
-          {/* the one hand — reaching down between both */}
-          <div
-            style={{
-              position: "absolute",
-              left: 1600 - 170,
-              top: 500,
-              opacity: rev(frame, 140, 14),
-            }}
-          >
-            <ClampGlyph closed={tighten} size={340} />
-          </div>
+          {/* the one hand — puppet strings from a single node down to BOTH cards */}
+          {stringP > 0 ? (
+            <svg
+              width={3200}
+              height={1800}
+              viewBox="0 0 3200 1800"
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                // recede once the pattern line takes the frame
+                opacity: interpolate(frame, [206, 218], [1, 0.12], {
+                  extrapolateLeft: "clamp",
+                  extrapolateRight: "clamp",
+                }),
+              }}
+            >
+              {[
+                { x: 790, y: 714 },
+                { x: 2410, y: 714 },
+              ].map((c, i) => {
+                const sag = 74 * (1 - taut);
+                const mx = (1600 + c.x) / 2;
+                const my = (430 + c.y) / 2 + sag;
+                const len = Math.hypot(c.x - 1600, c.y - 430) * 1.1;
+                return (
+                  <path
+                    key={i}
+                    d={`M 1600 430 Q ${mx} ${my} ${c.x} ${c.y}`}
+                    fill="none"
+                    stroke={noir.red}
+                    strokeWidth={5}
+                    strokeDasharray={len}
+                    strokeDashoffset={len * (1 - stringP)}
+                    opacity={0.85}
+                  />
+                );
+              })}
+              <circle cx={1600} cy={430} r={16 * stringP} fill={noir.red} />
+              <circle cx={1600} cy={430} r={30 * stringP} fill="none" stroke={noir.red} strokeWidth={4} opacity={0.5} />
+            </svg>
+          ) : null}
 
           {/* ANTHROPIC — the order */}
           <div style={{ position: "absolute", left: 470, top: 720 }}>

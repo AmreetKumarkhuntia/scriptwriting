@@ -101,7 +101,11 @@ export const ColdOpen: React.FC = () => {
           { cue: "rise", at: 60, volume: 0.4 },
           { cue: "swoosh", at: 100, volume: 0.3 },
           { cue: "pop", at: 146 }, // letter band snap
-          { cue: "boom", at: SLAM },
+          { cue: "switchOff", at: SLAM }, // the literal breaker
+          { cue: "boom", at: SLAM, volume: 0.45 },
+          { cue: "glitch", at: 250 },
+          { cue: "glitch", at: 275 },
+          { cue: "glitch", at: 300 },
           { cue: "riser", at: 235, volume: 0.35 },
           { cue: "boom", at: titleAt, volume: 0.4 },
         ]}
@@ -109,6 +113,17 @@ export const ColdOpen: React.FC = () => {
       <EnterExit>
         <Board />
         <MoStage keys={CAM} worldW={WORLD_W} worldH={WORLD_H}>
+          {/* world ghosts down as the KILL SWITCH lockup takes the frame */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: interpolate(frame, [328, 344], [1, 0.16], {
+                extrapolateLeft: "clamp",
+                extrapolateRight: "clamp",
+              }),
+            }}
+          >
           {/* R1 — the giant date */}
           <WorldAnchor x={R1} y={620} width={1400}>
             <div
@@ -172,6 +187,7 @@ export const ColdOpen: React.FC = () => {
           <WorldAnchor x={R3} y={430} width={520}>
             <FlatSwitch flip={flip} size={400} hitAt={SLAM} />
           </WorldAnchor>
+          </div>
         </MoStage>
 
         {/* title lockup on the wide shot */}
@@ -193,5 +209,3 @@ export const ColdOpen: React.FC = () => {
     </AbsoluteFill>
   );
 };
-
-void interpolate;
