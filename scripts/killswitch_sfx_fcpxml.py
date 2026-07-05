@@ -2,10 +2,11 @@
 """
 killswitch_sfx_fcpxml.py — emit the AI Kill Switch SFX track as a DaVinci-importable FCPXML.
 
-One 1080p30 timeline: the 10 takeover MP4s sit on the spine at their cut-sheet drop-in
-offsets, and every SFX cue hangs off its clip as a connected audio asset-clip (lane -1/-2/…)
-with the mix level from the Remotion render baked in as <adjust-volume>. Import into
-Resolve, copy the audio lanes into the master assembly, mute the takeovers' baked audio.
+One 1080p30 timeline: all 19 clips (10 takeovers + 9 KS-Gap gap-fillers — the video is fully
+faceless, zero spine gaps, 0:00→6:08) sit at their cut-sheet drop-in offsets, and every SFX
+cue hangs off its clip as a connected audio asset-clip (lane -1/-2/…) with the mix level from
+the Remotion render baked in as <adjust-volume>. Import into Resolve, copy the audio lanes
+into the master assembly, mute the clips' baked audio.
 
 The CUES table below mirrors the SfxTrack blocks in remotion-all/src/AIKillSwitch/clips/*.tsx
 and the manifest defaults in src/AIKillSwitch/sfx.ts — regenerate this file if either changes.
@@ -22,8 +23,13 @@ from xml.sax.saxutils import quoteattr
 
 FPS = 30
 W, H = 1920, 1080
-WIN_DIR = "F:/videoEditing/kill switch/takeovers"
-MNT_DIR = Path("/mnt/f/videoEditing/kill switch/takeovers")
+WIN_BASE = "F:/videoEditing/kill switch"
+MNT_BASE = Path("/mnt/f/videoEditing/kill switch")
+
+
+def subdir(clip: str) -> str:
+    """KS-Gap* renders live in gaps/, everything else in takeovers/."""
+    return "gaps" if clip.startswith("KS-Gap") else "takeovers"
 
 # cue name -> (file in takeovers/sfx/, manifest default volume)  [src/AIKillSwitch/sfx.ts]
 SFX = {
@@ -52,43 +58,101 @@ CLIPS = [
         ("glitch", 250, None), ("glitch", 275, None), ("glitch", 300, None),
         ("boom", 338, 0.40),
     ]),
+    ("KS-Gap1", 420, 810, [
+        ("whoosh", 0, 0.30), ("pop", 12, None), ("whoosh", 164, 0.35), ("swoosh", 212, 0.30),
+        ("whoosh", 497, 0.35), ("riser", 520, 0.35), ("boom", 545, 0.35),
+        ("whoosh", 665, 0.35), ("impact", 713, None), ("whoosh", 762, 0.30),
+    ]),
     ("KS-SealDrop", 1230, 300, [
         ("whoosh", 0, 0.30), ("pop", 22, None), ("pop", 34, None), ("pop", 46, None),
         ("rise", 140, 0.50), ("boom", 208, 0.60), ("impact", 208, 0.55),
+    ]),
+    ("KS-Gap2", 1530, 375, [
+        ("whoosh", 0, 0.30), ("pop", 62, None), ("swoosh", 90, 0.30),
+        ("whoosh", 255, 0.35), ("riser", 262, 0.35), ("impact", 301, None),
     ]),
     ("KS-Timeline", 1905, 360, [
         ("whoosh", 0, 0.30), ("flare", 28, 0.35), ("whoosh", 88, 0.40), ("pop", 134, None),
         ("whoosh", 198, 0.40), ("riser", 215, 0.40), ("alert", 256, 0.30),
         ("whoosh", 292, 0.35), ("boom", 302, 0.35),
     ]),
+    ("KS-Gap3", 2265, 1350, [
+        ("whoosh", 0, 0.30), ("pop", 113, None), ("pop", 128, None),
+        ("glitch", 195, 0.30), ("glitch", 207, 0.30), ("whoosh", 243, 0.35),
+        ("whoosh", 417, 0.35), ("impact", 461, None), ("whoosh", 492, 0.30),
+        ("pop", 642, None), ("whoosh", 729, 0.30), ("riser", 810, 0.35),
+        ("boom", 860, 0.40), ("whoosh", 954, 0.35), ("pop", 998, None),
+        ("pop", 1031, None), ("alert", 1085, 0.30), ("pop", 1142, None),
+        ("whoosh", 1176, 0.35), ("boom", 1220, 0.40),
+    ]),
     ("KS-Network", 3615, 240, [
         ("pop", 12, None), ("pop", 20, None), ("swoosh", 30, 0.30),
         ("alert", 95, 0.35), ("alert", 150, 0.40), ("swoosh", 172, 0.30),
+    ]),
+    ("KS-Gap4", 3855, 570, [
+        ("rise", 8, 0.35), ("impact", 32, None), ("pop", 80, None),
+        ("whoosh", 120, 0.35), ("pop", 164, None), ("boom", 239, 0.40),
+        ("whoosh", 279, 0.35), ("pop", 323, None), ("alert", 407, 0.35),
+        ("whoosh", 500, 0.30),
     ]),
     ("KS-Vault", 4425, 360, [
         ("whoosh", 0, 0.30), ("swoosh", 24, 0.30), ("pop", 112, None),
         ("whoosh", 190, 0.35), ("riser", 205, 0.35), ("impact", 232, None),
         ("alert", 246, 0.30),
     ]),
+    ("KS-Gap5", 4785, 1164, [
+        ("whoosh", 0, 0.30), ("pop", 29, None), ("pop", 102, None),
+        ("boom", 172, 0.35), ("whoosh", 216, 0.35), ("alert", 292, 0.30),
+        ("whoosh", 360, 0.35), ("impact", 404, None), ("riserBig", 478, 0.45),
+        ("flare", 492, 0.40), ("whoosh", 753, 0.35), ("riser", 770, 0.35),
+        ("boom", 797, 0.35), ("whoosh", 837, 0.35), ("impact", 881, None),
+        ("pop", 1046, None),
+    ]),
     ("KS-StampGate", 5949, 240, [
         ("rise", 36, 0.35), ("impact", 52, None), ("alert", 118, 0.40),
         ("pop", 140, None), ("swoosh", 172, 0.35),
+    ]),
+    ("KS-Gap6", 6189, 771, [
+        ("whoosh", 0, 0.30), ("pop", 54, None), ("swoosh", 95, 0.30),
+        ("whoosh", 186, 0.35), ("switchOff", 252, 0.45), ("whoosh", 333, 0.35),
+        ("boom", 377, 0.40), ("whoosh", 489, 0.35), ("riser", 682, 0.35),
+        ("impact", 701, None),
     ]),
     ("KS-SwitchBack", 6960, 360, [
         ("swoosh", 20, 0.30), ("pop", 62, None), ("rise", 92, 0.40),
         ("switchOn", 132, None), ("boom", 132, 0.45), ("flare", 148, None),
         ("whoosh", 282, 0.40), ("alert", 300, None),
     ]),
+    ("KS-Gap7", 7320, 1185, [
+        ("whoosh", 0, 0.30), ("pop", 47, None), ("pop", 131, None), ("pop", 203, None),
+        ("whoosh", 306, 0.35), ("boom", 350, 0.40), ("boom", 360, 0.35),
+        ("whoosh", 546, 0.30), ("boom", 626, 0.40), ("whoosh", 630, 0.30),
+        ("pop", 674, None), ("pop", 737, None), ("pop", 782, None),
+        ("boom", 821, 0.35), ("whoosh", 861, 0.30), ("pop", 905, None),
+        ("swoosh", 995, 0.30), ("whoosh", 1016, 0.30), ("alert", 1076, 0.35),
+    ]),
     ("KS-OrderVsRequest", 8505, 270, [
         ("pop", 16, None), ("pop", 30, None), ("impact", 58, 0.45),
         ("swoosh", 120, 0.30), ("rise", 150, 0.35), ("boom", 212, 0.40),
+    ]),
+    ("KS-Gap8", 8775, 405, [
+        ("whoosh", 0, 0.30), ("pop", 16, None), ("pop", 28, None),
+        ("rise", 140, 0.35), ("impact", 155, None), ("whoosh", 192, 0.35),
+        ("switchOff", 300, 0.40), ("pop", 317, None),
     ]),
     ("KS-Swarm", 9180, 360, [
         ("cable", 70, None), ("alert", 80, 0.25), ("whoosh", 112, 0.40),
         ("riserBig", 138, None), ("flare", 156, None), ("pop", 268, None),
         ("pop", 284, None),
     ]),
-    ("KS-Outro", 10575, 300, [
+    ("KS-Gap9", 9540, 1035, [
+        ("whoosh", 0, 0.30), ("pop", 64, None), ("whoosh", 183, 0.35),
+        ("pop", 227, None), ("pop", 254, None), ("whoosh", 390, 0.30),
+        ("boom", 434, 0.40), ("whoosh", 609, 0.30), ("boom", 685, 0.35),
+        ("whoosh", 741, 0.35), ("riser", 900, 0.40), ("impact", 954, None),
+        ("boom", 962, 0.45), ("whoosh", 970, 0.35),
+    ]),
+    ("KS-Outro", 10575, 465, [
         ("switchOff", 40, None), ("boom", 40, 0.35), ("switchOn", 84, None),
         ("boom", 84, 0.35), ("whoosh", 120, 0.35), ("riser", 148, 0.40),
         ("swoosh", 170, 0.35), ("pop", 232, None),
@@ -101,7 +165,7 @@ def tc(frames: int) -> str:
 
 
 def file_url(rel: str) -> str:
-    return "file:///" + urllib.parse.quote(f"{WIN_DIR}/{rel}", safe=":/")
+    return "file:///" + urllib.parse.quote(f"{WIN_BASE}/{rel}", safe=":/")
 
 
 def probe(path: Path) -> tuple[float, int, int]:
@@ -132,12 +196,13 @@ def main() -> int:
     out_xml, out_md = sys.argv[1], sys.argv[2]
 
     for rel, _ in SFX.values():
-        p = MNT_DIR / "sfx" / rel
+        p = MNT_BASE / "takeovers" / "sfx" / rel
         assert p.exists(), f"missing on F:: {p}"
     for name, *_ in CLIPS:
-        assert (MNT_DIR / f"{name}.mp4").exists(), f"missing on F:: {name}.mp4"
+        p = MNT_BASE / subdir(name) / f"{name}.mp4"
+        assert p.exists(), f"missing on F:: {p}"
 
-    meta = {cue: probe(MNT_DIR / "sfx" / rel) for cue, (rel, _) in SFX.items()}
+    meta = {cue: probe(MNT_BASE / "takeovers" / "sfx" / rel) for cue, (rel, _) in SFX.items()}
 
     # ---- resources ----
     res = [
@@ -152,7 +217,7 @@ def main() -> int:
             f'    <asset id="{aid}" name={quoteattr(name)} start="0s" duration="{tc(durf)}" '
             f'hasVideo="1" hasAudio="1" format="r1" videoSources="1" '
             f'audioSources="1" audioChannels="2" audioRate="48000">\n'
-            f'      <media-rep kind="original-media" src={quoteattr(file_url(name + ".mp4"))}/>\n'
+            f'      <media-rep kind="original-media" src={quoteattr(file_url(f"{subdir(name)}/{name}.mp4"))}/>\n'
             f'    </asset>'
         )
     sfx_id = {}
@@ -165,7 +230,7 @@ def main() -> int:
             f'    <asset id="{aid}" name={quoteattr(Path(rel).stem)} start="0s" '
             f'duration="{tc(durf)}" hasAudio="1" audioSources="1" '
             f'audioChannels="{ch}" audioRate="{rate}">\n'
-            f'      <media-rep kind="original-media" src={quoteattr(file_url("sfx/" + rel))}/>\n'
+            f'      <media-rep kind="original-media" src={quoteattr(file_url("takeovers/sfx/" + rel))}/>\n'
             f'    </asset>'
         )
 
@@ -234,14 +299,16 @@ def main() -> int:
         "Generated by `scripts/killswitch_sfx_fcpxml.py` (source of truth: the `SfxTrack`",
         "blocks in `remotion-all/src/AIKillSwitch/clips/*.tsx`). The importable timeline is",
         r"`F:\videoEditing\kill switch\takeovers\KS-SFX.fcpxml`; sound files live in",
-        r"`F:\videoEditing\kill switch\takeovers\sfx\`.",
+        r"`F:\videoEditing\kill switch\takeovers\sfx\`; gap-clip MP4s in",
+        r"`F:\videoEditing\kill switch\gaps\`.",
         "",
-        "**Import:** File → Import → Timeline → KS-SFX.fcpxml in Resolve. The takeover MP4s sit",
-        "on the video track at their cut-sheet drop-in positions with every SFX hit as its own",
-        "clip on the audio tracks below, levels pre-set to match the baked mix. Copy the audio",
-        "clips into the master assembly (positions carry over), then **mute the takeovers' baked",
-        "audio track**. If your importer drops the volume adjustments, clips land at 0 dB — the",
-        "dB column below is the target level per hit.",
+        "**Import:** File → Import → Timeline → KS-SFX.fcpxml in Resolve. All 19 clips (10",
+        "takeovers + 9 gap-fillers — the full faceless 0:00–6:08 video, no spine gaps) sit on",
+        "the video track at their cut-sheet positions with every SFX hit as its own clip on the",
+        "audio tracks below, levels pre-set to match the baked mix. This IS the assembly: keep",
+        "the video track, add the VO + music underneath, then **mute the clips' baked audio**.",
+        "If your importer drops the volume adjustments, clips land at 0 dB — the dB column",
+        "below is the target level per hit.",
         "",
         "| Clip | Local frame | Timeline @ | Cue | File | Level |",
         "|---|---|---|---|---|---|",
