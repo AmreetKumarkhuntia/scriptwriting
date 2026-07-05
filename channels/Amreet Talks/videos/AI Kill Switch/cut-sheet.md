@@ -14,6 +14,10 @@ as alternates.
   feels hard.
 - Clips are **full-screen takeovers**: VO keeps running underneath. Each carries its **own quiet
   SFX track** (~-12 dB under VO); keep or mute per taste.
+- **Editable SFX**: every hit is also available as its own audio clip — import
+  `F:\videoEditing\kill switch\takeovers\KS-SFX.fcpxml` (sound files in `takeovers\sfx\`),
+  copy the audio lanes into the assembly, mute the clips' baked audio. Full cue list:
+  [`sfx-track.md`](sfx-track.md).
 - 30fps clips on the 60fps timeline is fine.
 - Internal beats land on the exact spoken words (from `captions.md`); ±0.5s slip is fine
   everywhere. Trim **tails**, not heads.
