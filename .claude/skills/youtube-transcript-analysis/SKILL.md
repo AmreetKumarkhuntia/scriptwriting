@@ -12,6 +12,10 @@ watching — "pull the transcript", "what parts are interesting", "find the X
 moment", "make me a clip list", or sourcing quotes for a `research.md`. Works on
 long live streams (4h+), interviews, talks, and documentaries.
 
+Don't have a video ID yet — just "check my channel" or "find my recent
+streams"? Start with [youtube-channel-discovery] instead, then come back here
+with the shortlisted IDs.
+
 Prefer this `yt-dlp` flow over the MCP transcript tools: it returns **real
 timestamps** (the MCP transcript returns one undifferentiated blob), it's free,
 and it handles videos the MCP tool can't reach.
@@ -32,7 +36,16 @@ yt-dlp --skip-download --write-auto-subs --write-subs \
   -o "/tmp/yt_<ID>.%(ext)s" "https://www.youtube.com/watch?v=<ID>"
 ```
 
-- For another language swap `en.*` (e.g. `--sub-langs "es.*"`).
+- For another language swap `en.*` for the real language code (e.g. `"hi.*"`
+  for Hindi/Hinglish streams, `"es.*"` for Spanish).
+- **Before assuming a non-English video has no captions**, run
+  `yt-dlp --list-subs <url> | grep -i orig` first — don't guess from a
+  truncated `--list-subs` glance. The original ASR track is named `<lang>-orig`
+  (e.g. `hi-orig`), not necessarily `en-orig`, and it's easy to miss it inside
+  the long alphabetical auto-translate list if you eyeball/truncate the output.
+  See [youtube-channel-discovery] step 4 for the full gotcha — this exact
+  mistake once led to planning a whole local-Whisper fallback for streams that
+  had working Hindi captions all along.
 - This usually writes two files: `...en.vtt` (manual) and `...en-orig.vtt`
   (auto). Use whichever exists; they're often identical. Auto-captions only →
   expect garbled words (timestamps stay accurate).

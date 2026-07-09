@@ -17,14 +17,15 @@ The repo is organized by channel under `channels/` — see [`channels/README.md`
 
 The project `.mcp.json` configures these servers (all launched via `npx`):
 
-- **mcp-youtube** — search and retrieve YouTube metadata
 - **google-trends** — compare keywords, interest by region, related queries
 - **playwright** — browser automation for scraping articles and verifying sources
 - **remotion** — drive the `remotion-all/` motion-graphics project (scoped to `./remotion-all`)
 
 > For cited factual research, prefer tools that show their sources (e.g. Perplexity, or the
 > WebSearch/WebFetch tools) over raw LLM output. YouTube transcripts are pulled via the
-> `youtube-transcript-analysis` skill (yt-dlp), not an MCP server.
+> `youtube-transcript-analysis` skill (yt-dlp), not an MCP server. Finding a channel's own
+> recent videos/streams (rather than analyzing a known URL) is the `youtube-channel-discovery`
+> skill — also `yt-dlp`, no API key or MCP server needed.
 
 ### Blender (video editing) — Windows Claude only
 

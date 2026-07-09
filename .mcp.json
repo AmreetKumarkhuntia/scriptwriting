@@ -4,10 +4,6 @@
       "command": "npx",
       "args": ["-y", "@den.dance/google-trends-mcp"]
     },
-    "mcp-youtube": {
-      "command": "npx",
-      "args": ["-y", "mcp-youtube"]
-    },
     "playwright": {
       "command": "npx",
       "args": ["@playwright/mcp@latest"]
