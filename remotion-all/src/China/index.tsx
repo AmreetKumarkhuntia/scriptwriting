@@ -5,6 +5,7 @@ import { ChinaSection2 } from "./clips/ChinaSection2";
 import { ChinaSection3 } from "./clips/ChinaSection3";
 import { ChinaSection4 } from "./clips/ChinaSection4";
 import { ChinaSection5 } from "./clips/ChinaSection5";
+import { ChinaReel3Talk } from "./clips/ChinaReel3Talk";
 
 // Standalone motion-graphics clips for "China Takes Over AI".
 // Each clip is a full-screen replacement segment to drop onto the NLE timeline
@@ -12,6 +13,17 @@ import { ChinaSection5 } from "./clips/ChinaSection5";
 export const ChinaCompositions: React.FC = () => {
   return (
     <>
+      {/* SHORT — REEL 3 · TALKING-HEAD (his recording is the spine, graphics
+          only support) · 1080×1920 @ 30fps */}
+      <Composition
+        id="China-Reel3-Talk"
+        component={ChinaReel3Talk}
+        durationInFrames={600}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
       {/* SECTION 0 — HOOK · cues 1–10 · 0:00–0:31 */}
       <Composition
         id="China-Hook"

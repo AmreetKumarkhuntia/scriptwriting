@@ -1,6 +1,7 @@
 import { Composition } from "remotion";
 import { Fable5Hook } from "./clips/Fable5Hook";
 import { Fable5Reel2 } from "./clips/Fable5Reel2";
+import { Fable5Reel2Talk } from "./clips/Fable5Reel2Talk";
 import { Fable5Section1 } from "./clips/Fable5Section1";
 import { Fable5Section2 } from "./clips/Fable5Section2";
 import { Fable5Section3 } from "./clips/Fable5Section3";
@@ -19,6 +20,17 @@ export const Fable5Compositions: React.FC = () => {
         id="Fable5-Reel2"
         component={Fable5Reel2}
         durationInFrames={600}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* SHORT — REEL #2 TALKING-HEAD VARIANT · his own recording is the
+          spine, English captions, supporting graphics only · 1080×1920 @ 30fps */}
+      <Composition
+        id="Fable5-Reel2-Talk"
+        component={Fable5Reel2Talk}
+        durationInFrames={565}
         fps={30}
         width={1080}
         height={1920}

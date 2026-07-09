@@ -67,9 +67,11 @@ const ImpactLine: React.FC<{
 };
 
 // centered graphics line that fades in/out within its own Sequence
-const FadeCenter: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const FadeCenter: React.FC<{ children: React.ReactNode; durationInFrames: number }> = ({
+  children,
+  durationInFrames,
+}) => {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
   const op = Math.min(
     interpolate(frame, [0, 8], [0, 1], {
       extrapolateLeft: "clamp",
@@ -96,9 +98,16 @@ const Caption: React.FC<{
   post?: string;
   keyColor?: string;
   big?: boolean;
-}> = ({ pre = "", keyword, post = "", keyColor = colors.skyLight, big = false }) => {
+  durationInFrames: number;
+}> = ({
+  pre = "",
+  keyword,
+  post = "",
+  keyColor = colors.skyLight,
+  big = false,
+  durationInFrames,
+}) => {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
   const inP = interpolate(frame, [0, 7], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -425,7 +434,7 @@ export const AIJobsReel1Talk: React.FC = () => {
         <Sequence durationInFrames={105}>
           {/* line 1 (0–56) — exits before line 2 */}
           <Sequence durationInFrames={56}>
-            <FadeCenter>
+            <FadeCenter durationInFrames={56}>
               <ImpactLine
                 lines={["AI ISN'T COMING", "FOR YOUR JOB"]}
                 fontSize={124}
@@ -435,7 +444,7 @@ export const AIJobsReel1Talk: React.FC = () => {
           </Sequence>
           {/* line 2 (48–105) */}
           <Sequence from={48} durationInFrames={57}>
-            <FadeCenter>
+            <FadeCenter durationInFrames={57}>
               <ImpactLine
                 lines={["BUT THIS IS"]}
                 fontSize={188}
@@ -453,19 +462,29 @@ export const AIJobsReel1Talk: React.FC = () => {
 
         {/* captions (English) — timed to his delivery (clip starts frame 105) */}
         <Sequence from={111} durationInFrames={72}>
-          <Caption pre="If AI were really taking your jobs…" />
+          <Caption pre="If AI were really taking your jobs…" durationInFrames={72} />
         </Sequence>
         <Sequence from={186} durationInFrames={66}>
-          <Caption pre="look at " keyword="3 YEARS of data" post="." />
+          <Caption
+            pre="look at "
+            keyword="3 YEARS of data"
+            post="."
+            durationInFrames={66}
+          />
         </Sequence>
         <Sequence from={256} durationInFrames={68}>
-          <Caption pre="the data says… " keyword="NOTHING" />
+          <Caption pre="the data says… " keyword="NOTHING" durationInFrames={68} />
         </Sequence>
         <Sequence from={328} durationInFrames={86}>
-          <Caption pre="and the people actually at risk…" />
+          <Caption pre="and the people actually at risk…" durationInFrames={86} />
         </Sequence>
         <Sequence from={416} durationInFrames={84}>
-          <Caption pre="aren't " keyword="who you think" post="." />
+          <Caption
+            pre="aren't "
+            keyword="who you think"
+            post="."
+            durationInFrames={84}
+          />
         </Sequence>
 
         {/* supporting overlays (upper area — keep his face visible) */}
