@@ -61,12 +61,21 @@ Pre-publish: run `vidiq_score_title` on caption text where it doubles as the on-
   `--list-subs` output; see the tooling report from this session). Auto-ASR still garbles proper
   nouns/boss names and code-switched English — verify exact wording via `transcript.py window`
   before burning in captions.
-- `NxOMr6_jzA4`'s 30 candidates were scanned in a single retry pass (the original workflow run hit a
-  transient API error on this stream) and were **not** cross-normalized against the other 8 streams'
-  tiering the way the rest of the batch was — its S/A/B tiers are self-consistent but slightly less
-  rigorously calibrated than the other 8. Spot-check before treating its S-tier as equal-weight.
+- **All S+A tier candidates (69 of 143) have since been visually verified**, not just
+  transcript-scanned — a test cut ("died to a literal car") turned out to be pure talking-to-chat
+  with zero on-screen action, so every S/A candidate was checked against sampled video frames.
+  18 were dropped as transcript-only false positives, 9 got a corrected boss/enemy name (ASR
+  garbled several — the real names came from reading the on-screen health bars), and 3 were
+  downgraded pending a re-check (real footage exists, just not at the exact claimed timestamp).
+  **B-tier (74 candidates) is still transcript-only / unverified** — see `cut-list.md`'s "Needs
+  re-check" and "Rejected" sections for the full detail before trusting any B-tier row at face value.
+- `NxOMr6_jzA4`'s original 30 candidates were scanned in a single retry pass (the original workflow
+  run hit a transient API error on this stream) and were **not** cross-normalized against the other
+  8 streams' tiering the way the rest of the batch was — since visually verified alongside everyone
+  else's S/A tier, so this is now less of a concern than it was.
 - Source VODs / any actual cut clips live on **`/mnt/f`** (Windows F: drive) once cutting starts —
-  not the repo. This pass (candidate discovery) ran on macOS, so working files (captions, cleaned
-  transcripts) live in a session scratchpad, not committed anywhere.
+  not the repo. This pass (candidate discovery + visual verification) ran on macOS, so working files
+  (captions, cleaned transcripts, low-res verification downloads, contact sheets) live in a session
+  scratchpad, not committed anywhere.
 
 → Full timestamped, tiered candidate sweep in [`cut-list.md`](./cut-list.md).
