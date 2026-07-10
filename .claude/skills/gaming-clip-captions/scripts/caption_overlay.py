@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """Burn dynamic, word-synced captions (with optional emoji) onto a cut clip.
 
-Renders each caption as its own transparent PNG via Pillow (this repo's
-ffmpeg has no drawtext/libfreetype — do not try ffmpeg's text filters) then
+Renders each caption as its own transparent PNG via Pillow (keeps emoji
+compositing simple — ffmpeg's drawtext can't render color emoji glyphs) then
 composites them onto the video with a chained ffmpeg overlay filter, each
 one only visible during its own time window (`enable='between(t,start,end)'`).
+
+IMPORTANT: this script MUST run inside the skill's dedicated .venv at
+`~/.claude/skills/gaming-clip-captions/.venv/` (Pillow + numpy). If invoked
+under the system python it auto-relaunches under the venv interpreter.
 
 Usage:
   python3 caption_overlay.py VIDEO.mp4 MANIFEST.json SEAM_Y OUT.mp4
@@ -39,19 +43,27 @@ Caption text conventions (matches what shipped well for Amreet Aint):
 """
 import argparse
 import json
+import os
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
+# Self-relaunch under the venv interpreter if Pillow/numpy aren't available
+# in the current Python. Idempotent — once under .venv this is a no-op.
+_VENV_DIR = Path(__file__).resolve().parent.parent / ".venv"
+_VENV_PY = _VENV_DIR / "bin/python3"
+if _VENV_PY.exists() and Path(sys.prefix).resolve() != _VENV_DIR.resolve():
+    os.execv(str(_VENV_PY), [str(_VENV_PY), __file__, *sys.argv[1:]])
+
 from PIL import Image, ImageDraw, ImageFont
 
-FONT_BOLD = "/System/Library/Fonts/Supplemental/Impact.ttf"
-EMOJI_FONT = "/System/Library/Fonts/Apple Color Emoji.ttc"
-# Apple Color Emoji only has bitmap strikes at these exact sizes — anything
-# else throws "invalid pixel size". Render at the largest (160) and resize
-# down with Pillow for whatever target size you actually want.
-EMOJI_STRIKE_SIZE = 160
+FONT_BOLD = "/mnt/d/Thumbnails/Thumbnail making/FONTS/impact.ttf"
+EMOJI_FONT = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+# Noto Color Emoji only has a bitmap strike at this exact size — anything
+# else throws "invalid pixel size". Render at 109 and resize down with
+# Pillow for whatever target size you actually want.
+EMOJI_STRIKE_SIZE = 109
 W = 1080
 CARD_H = 130
 FONT_SIZE = 58

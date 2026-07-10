@@ -15,13 +15,24 @@ Usage:
   python3 detect_seam.py FRAME.png
 
 Prints a single integer: the pixel row (y) of the seam. Sanity-check it once
-per clip layout by cropping +-50px around the printed row (this repo's ffmpeg
-has no drawtext, so eyeballing via Read on a cropped PNG is the fast path).
+per clip layout by cropping +-50px around the printed row and eyeballing it
+via Read on the cropped PNG.
+
+IMPORTANT: this script MUST run inside the skill's dedicated .venv at
+`~/.claude/skills/gaming-clip-captions/.venv/` (Pillow + numpy). If invoked
+under the system python it auto-relaunches under the venv interpreter.
 """
 import argparse
 import os
 import subprocess
+import sys
 import tempfile
+from pathlib import Path
+
+_VENV_DIR = Path(__file__).resolve().parent.parent / ".venv"
+_VENV_PY = _VENV_DIR / "bin/python3"
+if _VENV_PY.exists() and Path(sys.prefix).resolve() != _VENV_DIR.resolve():
+    os.execv(str(_VENV_PY), [str(_VENV_PY), __file__, *sys.argv[1:]])
 
 import numpy as np
 from PIL import Image

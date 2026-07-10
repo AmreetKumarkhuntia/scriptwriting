@@ -5,6 +5,7 @@ import { AIJobsCompositions } from "./AIJobs";
 import { Fable5Compositions } from "./Fable5";
 import { AIBubbleCompositions } from "./AIBubble";
 import { AIKillSwitchCompositions } from "./AIKillSwitch";
+import { AmreetAintCompositions } from "./AmreetAint";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ export const RemotionRoot: React.FC = () => {
       <Fable5Compositions />
       <AIBubbleCompositions />
       <AIKillSwitchCompositions />
+      <AmreetAintCompositions />
     </>
   );
 };

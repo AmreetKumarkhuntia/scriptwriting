@@ -9,9 +9,13 @@ the pipeline: verifying a transcript-derived candidate is visually what it
 claims to be, before you commit to actually cutting it.
 
 Uses Pillow for frame labeling/tiling instead of ffmpeg's `drawtext`/`tile`
-filters — some ffmpeg builds (this one included) aren't compiled with
-libfreetype, so `drawtext` isn't available. ffmpeg is still used to grab the
-raw frames (-ss seek + -frames:v 1); everything after that is Python/PIL.
+filters, to keep this consistent with the rest of the pipeline's Pillow-based
+overlay tooling. ffmpeg is still used to grab the raw frames (-ss seek +
+-frames:v 1); everything after that is Python/PIL.
+
+IMPORTANT: this script MUST run inside the skill's dedicated .venv at
+`~/.claude/skills/vod-clip-extraction/.venv/` (Pillow, among others). If
+invoked under the system python it auto-relaunches under the venv interpreter.
 
 Usage:
   python3 candidate_preview.py VIDEO CANDIDATES.json OUT.jpg [--frames N|auto] [--start-index I]
@@ -40,11 +44,17 @@ import subprocess
 import sys
 import tempfile
 import os
+from pathlib import Path
+
+_VENV_DIR = Path(__file__).resolve().parent.parent / ".venv"
+_VENV_PY = _VENV_DIR / "bin/python3"
+if _VENV_PY.exists() and Path(sys.prefix).resolve() != _VENV_DIR.resolve():
+    os.execv(str(_VENV_PY), [str(_VENV_PY), __file__, *sys.argv[1:]])
 
 from PIL import Image, ImageDraw, ImageFont
 
-FONT_BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
-FONT_REGULAR = "/System/Library/Fonts/Supplemental/Arial.ttf"
+FONT_BOLD = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
+FONT_REGULAR = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
 THUMB_W = 320
 HEADER_H = 90
 PAD = 10

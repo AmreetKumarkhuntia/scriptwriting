@@ -22,57 +22,46 @@ at the seam between the two.
 
 ### 1. Get word-level caption timing
 
-Pull the video's real auto-caption track the same way
-[youtube-transcript-analysis] does (`yt-dlp --write-auto-subs`), but don't
-use the cleaned/bucketed output for this — go straight to the raw `.vtt`.
-YouTube's auto-captions are word-by-word "growing" cues:
-```
-01:29:56.080 --> 01:29:58.310 align:start position:0%
-भाई<01:29:56.400><c> नहीं</c><01:29:56.639><c> रहे</c>...
-```
-Each `<HH:MM:SS.mmm><c>word</c>` tag is that word's exact on-screen moment —
-this is the ground truth for syncing captions, far more precise than the
-minute-bucketed `transcript.py clean` output (which is for *finding* beats,
-not for word-level sync). Grep the raw VTT for your clip's time range.
-
-**If your clip is a jump-cut** (spliced from multiple non-contiguous source
-segments — see the `bhai-bhai-bhai` clip for a worked example), convert each
-segment's word timestamps to `(word_time - segment_start)`, then add that
-segment's **cumulative offset** in the final concatenated video (segment 2's
-offset = segment 1's duration; segment 3's offset = segment 1 + segment 2's
-duration; etc.). Add the offset **once** — a doubled offset is the most
-likely bug here and will silently push cards past the clip's actual end
-(ffmpeg just fails or the tail cards never show).
+Word timing comes from a **local ASR model**, not YouTube's own auto-caption
+VTT (too imprecise to drive an actual cut or caption — that's what it's
+good for at the research/discovery stage in [youtube-transcript-analysis],
+not here). [vod-clip-extraction]'s `transcribe_words.py` transcribes the
+whole VOD once with `Oriserve/Whisper-Hindi2Hinglish-Prime` (faster-whisper,
+GPU-accelerated, converted model lives on `/mnt/e/models/`) and writes
+`words.json` at VOD-absolute time, stored alongside the VOD's other
+artifacts on `/mnt/f`. Re-tightening a clip's in/out points never needs
+re-transcribing — the word timestamps don't move.
 
 ### 2. Group words into caption cards
 
-Break the word timeline into ~2-6 word phrases at natural speech pauses
-(the auto-caption cue boundaries are a good default breakpoint; punctuation
-and repeated-word bursts like "bhai bhai bhai bhai" work well as their own
-card). Write a JSON manifest:
+```bash
+python3 .claude/skills/gaming-clip-captions/scripts/caption_plan.py \
+  path/to/vod.words.json <CLIP_START_ABS> <CLIP_END_ABS> manifest.json
+```
+Slices `words.json` to the clip's window, re-zeros to clip-relative time,
+and groups into ~2-3s caption chunks on pause/word-count/duration
+boundaries — writing the flat manifest `caption_overlay.py` expects:
 
 ```json
 [
-  {"text": "Oh what the [bleep]", "start": 11.3, "end": 12.6, "emoji": "💀"},
-  {"text": "BHAI BHAI BHAI BHAI", "start": 12.6, "end": 15.6, "emoji": "😭"},
+  {"text": "Oh what the bleep", "start": 11.3, "end": 12.6, "emoji": null},
+  {"text": "BHAI BHAI BHAI BHAI", "start": 12.6, "end": 15.6, "emoji": null},
   {"text": "Bach gaye", "start": 15.6, "end": 16.8, "emoji": null}
 ]
 ```
 
-**Caption text rules** (learned the hard way — see Gotchas):
-- Write in **Hinglish** (Roman-script transliteration), not Devanagari —
-  Impact is a Latin-only font. Match how the streamer actually talks;
-  don't formally translate.
-- **Verify each line against what's actually meant, not the literal ASR
-  text.** Hindi auto-captions transliterate *phonetically* — real words get
-  swapped for similar-sounding ones. Confirmed mistakes so far: "रेप" is
-  usually **"revive"** (co-op revive callout), not "rep"; "एडिट" can
-  actually be **"addict"** (streamer banter), not "edit". When a word looks
-  out of place for the context, say so before locking in the caption.
+`caption_plan.py` never assigns emoji — that stays an editorial call, not
+something to automate:
 - **Emoji only on the beats that land** — reaction/punchline words, not
   every card. Rough mapping that's worked so far: swearing/bleep → 💀 or
   🤬, panic/exclamation → 😭 or 😱, pain sounds ("aay aay aay") → 😵,
-  a joke/aside → 😂. Don't force one onto a flat narration line.
+  a joke/aside → 😂. Don't force one onto a flat narration line. Hand-edit
+  the generated manifest to add these before rendering.
+- Spot-check the actual card text against what's really being said before
+  locking it in — the model can still mishear a word occasionally (see
+  Gotchas), and `verify_clip_audio.py` (run right after cutting, see
+  [vod-clip-extraction]) is the gate for catching boundary/timing drift
+  before you get this far.
 
 ### 3. Verify exact moments with a dense frame burst
 
@@ -107,10 +96,10 @@ setup, so you only need to (re)run it if the facecam position changes.
 python3 .claude/skills/gaming-clip-captions/scripts/caption_overlay.py \
   your_clip.mp4 manifest.json <SEAM_Y> your_clip_captioned.mp4
 ```
-Renders every card as its own transparent PNG (Pillow — **not** ffmpeg
-`drawtext`, this repo's ffmpeg build has no libfreetype) and composites them
-with a chained `overlay=...:enable='between(t,start,end)'` filter graph so
-each card only shows during its own window.
+Renders every card as its own transparent PNG via Pillow (keeps emoji
+compositing simple — ffmpeg's `drawtext` can't render color emoji glyphs)
+and composites them with a chained `overlay=...:enable='between(t,start,end)'`
+filter graph so each card only shows during its own window.
 
 ### 6. Add the subscribe end-card
 
@@ -122,21 +111,38 @@ Freezes + darkens the last frame, burns in "CHECK FULL VIDEO / AND
 SUBSCRIBE" + the handle (override with `--line1`/`--line2`/`--handle`, hold
 duration with `--hold`), and concats it onto the clip.
 
+> **Static banners / context tags are NOT done here.** A burned-in overlay bar
+> or "what's going on" label is added later in the **Remotion** motion-graphics
+> project (or directly at upload time), not by this skill — burning it in with
+> ffmpeg made placement guesswork that kept colliding with the facecam/HUD/
+> platform-chrome. This skill's job ends at word-synced captions + end-card;
+> the clip it outputs is the input to that later banner/motion pass.
+
 ## Gotchas
 
-- **No ffmpeg `drawtext`/`tile` on this machine** — no libfreetype in the
-  build. Every text/emoji render in this pipeline goes through Pillow, then
-  gets composited as an image via ffmpeg's `overlay` filter. If a future
-  environment *does* have drawtext, it's still simpler to keep using this
-  Pillow path for consistency (font metrics, emoji, outline style all match).
-- **Apple Color Emoji only renders at fixed bitmap-strike sizes**: 20, 32,
-  40, 48, 64, 96, 160px. Any other size throws `invalid pixel size`. Render
-  at 160 (the largest/crispest) and let Pillow's `.resize()` scale it down
-  to whatever you actually need.
-- **Jump-cut offset math** — see step 1. Sanity-check by spot-reading a
-  frame right at each card's start time before trusting the whole render.
-- Devanagari text will not render in Impact — if a caption looks like tofu
-  boxes, you forgot to transliterate it.
+- Every text/emoji render in this pipeline goes through Pillow, then gets
+  composited as an image via ffmpeg's `overlay` filter — kept this way even
+  though this box's ffmpeg does have `drawtext`/libfreetype, since drawtext
+  can't render color emoji glyphs and Pillow keeps font metrics/outline
+  style consistent across every card.
+- **Noto Color Emoji only renders at one fixed bitmap-strike size: 109px.**
+  Any other size throws `invalid pixel size`. Render at 109 and let Pillow's
+  `.resize()` scale it down to whatever you actually need.
+- **Jump-cut offset math** — if a clip is spliced from multiple
+  non-contiguous source segments, `caption_plan.py` needs to be run
+  per-segment with that segment's own `[start,end]` window, then each
+  segment's card timestamps need the **cumulative offset** of the segments
+  before it added once (segment 2's offset = segment 1's duration, etc.) —
+  a doubled offset is the most likely bug and will silently push cards past
+  the clip's actual end. Sanity-check by spot-reading a frame right at each
+  card's start time before trusting the whole render.
+- Devanagari text will not render in Impact (Latin-only font) — this
+  shouldn't come up since the model outputs Romanized Hinglish natively,
+  but if a caption looks like tofu boxes, that's why.
+- The known faster-whisper DTW quirk — the first word after a long silence
+  can be mistimed by several seconds — is why `caption_plan.py` pads a
+  chunk's start time slightly when its first word was flagged
+  `post_silence` during transcription, rather than trusting it as-is.
 
 ## Reference example
 
